@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl1gksfsy10ru"]
+
+[ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://brdtp6d7son78" path="res://scenes/characters/player.tscn" id="2_0xm2m"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Stage" parent="." instance=ExtResource("1_ig7tw")]
+
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(29, 43)
+collision_layer = 1
+collision_mask = 1
