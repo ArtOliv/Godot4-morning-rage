@@ -1,13 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl1gksfsy10ru"]
+[gd_scene load_steps=5 format=3 uid="uid://dl1gksfsy10ru"]
 
+[ext_resource type="Script" uid="uid://dc4k5515071iw" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://brdtp6d7son78" path="res://scenes/characters/player.tscn" id="2_0xm2m"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(6, 64)
+
 [node name="Main" type="Node2D"]
+script = ExtResource("1_h2yge")
 
 [node name="Stage" parent="." instance=ExtResource("1_ig7tw")]
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(29, 43)
-collision_layer = 1
-collision_mask = 1
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(50, 32)
+
+[node name="InvisibleWalls" type="Node2D" parent="Camera"]
+position = Vector2(-50, -32)
+
+[node name="LeftWall" type="StaticBody2D" parent="Camera/InvisibleWalls"]
+position = Vector2(0, 32)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/InvisibleWalls/LeftWall"]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="RightWall" type="StaticBody2D" parent="Camera/InvisibleWalls"]
+position = Vector2(100, 32)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/InvisibleWalls/RightWall"]
+shape = SubResource("RectangleShape2D_h2yge")

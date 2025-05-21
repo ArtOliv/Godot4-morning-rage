@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://nhvkbqi22r0o"]
+[gd_scene load_steps=4 format=3 uid="uid://nhvkbqi22r0o"]
 
-[ext_resource type="Script" uid="uid://eci7njbkufwf" path="res://character.gd" id="1_1bdar"]
+[ext_resource type="Script" uid="uid://eci7njbkufwf" path="res://scenes/characters/character.gd" id="1_1bdar"]
 [ext_resource type="Texture2D" uid="uid://cs20gm24t0ru0" path="res://assets/art/characters/shadow.png" id="2_e22cc"]
+[ext_resource type="PackedScene" uid="uid://bjdth4hiiwg3f" path="res://scenes/colliders/damage_emitter.tscn" id="3_e22cc"]
 
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 0
@@ -19,3 +20,7 @@ offset = Vector2(-7, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="DamageEmitter" parent="." instance=ExtResource("3_e22cc")]
+
+[editable path="DamageEmitter"]
