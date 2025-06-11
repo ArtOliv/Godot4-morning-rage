@@ -101,7 +101,8 @@ func on_receive_damage(damage: int, direction: Vector2) -> void:
 		velocity = direction * knockback_intensity
 
 func on_emit_damage(damage_receiver: DamageReceiver) -> void:
-	damage_receiver.damage_received.emit(damage)
+	var direction := Vector2.LEFT if damage_receiver.global_position.x < global_position.x else Vector2.RIGHT
+	damage_receiver.damage_received.emit(damage, direction)
 	print(damage_receiver)
 
 func on_takeoff_complete() -> void:
