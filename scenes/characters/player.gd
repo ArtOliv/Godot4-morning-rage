@@ -11,10 +11,21 @@ func input() -> void:
 	velocity = direction * speed
 	if can_attack() and Input.is_action_just_pressed("attack"):
 		state = State.ATTACK
+		if is_last_hit_succesful:
+			attack_combo_index = (attack_combo_index+1) % anim_attacks.size()
+			is_last_hit_succesful = false
+		else:
+			attack_combo_index = 0
 	if can_jump() and Input.is_action_just_pressed("jump"):
 		state = State.TAKEOFF
 	if can_jumpkick() and Input.is_action_just_pressed("attack"):
 		state = State.JUMPKICK
+
+func set_heading():
+	if velocity.x > 0:
+		heading = Vector2.RIGHT
+	elif velocity.x < 0: 
+		heading = Vector2.LEFT
 
 func reserve_slot(enemy: Enemy) -> EnemySlot:
 	var available_slots := enemy_slots.filter(
