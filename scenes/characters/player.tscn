@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://brdtp6d7son78"]
+[gd_scene load_steps=17 format=3 uid="uid://brdtp6d7son78"]
 
 [ext_resource type="PackedScene" uid="uid://nhvkbqi22r0o" path="res://scenes/characters/character.tscn" id="1_rp718"]
 [ext_resource type="Script" uid="uid://cs67dh5i0hmc7" path="res://scenes/characters/player.gd" id="2_76oj4"]
 [ext_resource type="Texture2D" uid="uid://frqg0b8y1bi4" path="res://assets/art/characters/player.png" id="2_yewv4"]
+[ext_resource type="PackedScene" uid="uid://xnk77k0b400y" path="res://scenes/characters/enemy_slot.tscn" id="4_dyp2m"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_76oj4"]
 radius = 2.0
@@ -260,6 +261,7 @@ script = ExtResource("2_76oj4")
 damage = 4
 max_health = 30
 jump_intesity = 160.0
+speed = 40.0
 
 [node name="CharacterSprite" parent="." index="1"]
 texture = ExtResource("2_yewv4")
@@ -294,6 +296,20 @@ collision_layer = 8
 [node name="CollisionShape2D" parent="DamageReceiver" index="0"]
 position = Vector2(1, -17)
 shape = SubResource("RectangleShape2D_76oj4")
+
+[node name="EnemySlots" type="Node2D" parent="." index="6"]
+
+[node name="EnemySlot" parent="EnemySlots" index="0" instance=ExtResource("4_dyp2m")]
+position = Vector2(16, 3)
+
+[node name="EnemySlot2" parent="EnemySlots" index="1" instance=ExtResource("4_dyp2m")]
+position = Vector2(16, -4)
+
+[node name="EnemySlot3" parent="EnemySlots" index="2" instance=ExtResource("4_dyp2m")]
+position = Vector2(-14, -4)
+
+[node name="EnemySlot4" parent="EnemySlots" index="3" instance=ExtResource("4_dyp2m")]
+position = Vector2(-14, 3)
 
 [editable path="DamageEmitter"]
 [editable path="DamageReceiver"]
