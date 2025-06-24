@@ -52,24 +52,6 @@ collision_mask = 33
 [node name="Enemy" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("4_1bvp3")]
 position = Vector2(70, 59)
 collision_mask = 52
-player = NodePath("../Player")
-
-[node name="Enemy2" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("4_1bvp3")]
-position = Vector2(14, 58)
-collision_mask = 52
-player = NodePath("../Player")
-
-[node name="Enemy3" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("4_1bvp3")]
-position = Vector2(111, 46)
-collision_mask = 52
-player = NodePath("../Player")
-
-[node name="Enemy4" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("4_1bvp3")]
-position = Vector2(-4, 32)
-collision_mask = 52
-player = NodePath("../Player")
-
-[node name="Enemy5" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("4_1bvp3")]
-position = Vector2(89, 51)
-collision_mask = 52
+duration_between_hits = 2000
+duration_preps_hit = 500
 player = NodePath("../Player")

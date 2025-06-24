@@ -3,6 +3,10 @@ extends Character
 
 @onready var enemy_slots : Array = $EnemySlots.get_children()
 
+func _ready() -> void:
+	super._ready()
+	anim_attacks = ["punch", "punch_alt", "kick", "roundkick"]
+
 func input() -> void:
 	if state == State.ATTACK:
 		velocity = Vector2.ZERO
