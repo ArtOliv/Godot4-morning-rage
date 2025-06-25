@@ -18,9 +18,11 @@ var anim_map : Dictionary= {
 	State.GROUNDED: "grounded", 
 }
 
+var direction:= Vector2.ZERO
 var height := 0.0
 var height_speed := 0.0
 var state = State.FALL
+var velocity := Vector2.ZERO
 
 func _ready():
 	height_speed = knockdown_intensity
@@ -29,6 +31,7 @@ func _process(delta: float) -> void:
 	handle_fall(delta)
 	handle_animations()
 	collectible_sprite.position = Vector2.UP * height
+	position += velocity * delta
 
 func handle_animations():
 	animation_player.play(anim_map[state])

@@ -15,6 +15,10 @@ run/main_scene="uid://dl1gksfsy10ru"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EntityManager="*res://utils/entity_manager.gd"
+
 [display]
 
 window/size/viewport_width=100

@@ -70,6 +70,8 @@ func _process(delta: float) -> void:
 	flip_sprites()
 	character_sprite.position = Vector2.UP * height
 	collision_shape.disabled = is_collision_disabled()
+	damage_emitter.monitoring = is_attacking()
+	damage_receiver.monitorable = can_get_hurt()
 	move_and_slide()
 
 func movement() -> void:
@@ -143,7 +145,10 @@ func can_jumpkick() -> bool:
 	return state == State.JUMP
 	
 func can_get_hurt() -> bool:
-	return [State.IDLE, State.WALK, State.TAKEOFF, State.LAND].has(state)
+	return [State.IDLE, State.WALK, State.TAKEOFF, State.LAND, State.PREP_ATTACK].has(state)
+
+func is_attacking()-> bool:
+	return [State.ATTACK, State.JUMPKICK].has(state)
 
 func can_pickup_collectible() -> bool:
 	var collectible_areas := collectible_sensor.get_overlapping_areas()

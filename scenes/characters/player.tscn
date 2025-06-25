@@ -88,18 +88,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [63]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("DamageEmitter:monitoring")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_eojnx"]
 resource_name = "land"
@@ -173,18 +161,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"on_action_comlpete"
 }]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DamageEmitter:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_kqtwu"]
@@ -266,18 +242,6 @@ tracks/1/keys = {
 "method": &"on_action_comlpete"
 }]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DamageEmitter:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="Animation" id="Animation_2l4js"]
 resource_name = "kick"
@@ -309,18 +273,6 @@ tracks/1/keys = {
 "method": &"on_action_comlpete"
 }]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DamageEmitter:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 
 [sub_resource type="Animation" id="Animation_jk2m4"]
 resource_name = "roundkick"
@@ -351,18 +303,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"on_action_comlpete"
 }]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("DamageEmitter:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_xhtjm"]
@@ -498,6 +438,7 @@ script = ExtResource("2_76oj4")
 can_respawn = true
 damage = 4
 damage_power = 6
+duration_grounded = 1000.0
 max_health = 30
 jump_intesity = 160.0
 knockback_intensity = 10.0
