@@ -18,10 +18,12 @@ const GRAVITY := 600.0
 @onready var character_sprite := $CharacterSprite
 @onready var collision_shape := $CollisionShape2D
 @onready var collateral_damage_emitter : Area2D= $CollateralDamageEmitterer
+@onready var collectible_sensor: Area2D = $CollectibleSensor
 @onready var damage_emitter := $DamageEmitter
 @onready var damage_receiver : DamageReceiver = $DamageReceiver
 
-enum State{IDLE, WALK, ATTACK, TAKEOFF, JUMP, LAND, JUMPKICK, HURT, FALL, GROUNDED, DEATH, FLY, PREP_ATTACK}
+enum State{IDLE, WALK, ATTACK, TAKEOFF, JUMP, LAND, JUMPKICK, 
+		   HURT, FALL, GROUNDED, DEATH, FLY, PREP_ATTACK, PICKUP}
 
 var anim_attacks := []
 var anim_map : Dictionary= {
@@ -37,6 +39,7 @@ var anim_map : Dictionary= {
 	State.DEATH: "grounded",
 	State.FLY: "fly",
 	State.PREP_ATTACK: "idle",
+	State.PICKUP: "pickup"
 }
 
 var attack_combo_index := 0
@@ -142,6 +145,22 @@ func can_jumpkick() -> bool:
 func can_get_hurt() -> bool:
 	return [State.IDLE, State.WALK, State.TAKEOFF, State.LAND].has(state)
 
+func can_pickup_collectible() -> bool:
+	var collectible_areas := collectible_sensor.get_overlapping_areas()
+	if collectible_areas.size() == 0:
+		return false
+	var collectible: Collectible = collectible_areas[0]
+	if collectible.type == Collectible.Type.FOOD:
+		return true
+	return false
+
+func pickup_collectible():
+	if can_pickup_collectible():
+		var collectible_areas := collectible_sensor.get_overlapping_areas()
+		var collectible: Collectible = collectible_areas[0]
+		if collectible.type == Collectible.Type.FOOD:
+			pass #o video é faca entao só fiz o generico por enquato 
+		collectible.queue_free()
 func is_collision_disabled() -> bool:
 	return [State.GROUNDED, State.DEATH, State.FLY].has(state)
 	
@@ -155,6 +174,10 @@ func on_takeoff_complete() -> void:
 
 func on_land_complete() -> void:
 	state = State.IDLE	
+	
+func on_pickup_complete() -> void:
+	state = State.IDLE
+	pickup_collectible()
 
 func on_receive_damage(amount: int, direction: Vector2, hit_type: DamageReceiver.HitType) -> void:
 	if can_get_hurt():
