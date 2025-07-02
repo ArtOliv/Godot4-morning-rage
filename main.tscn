@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://cl03o511fkok0" path="res://actors_container.gd" id="3_5vw27"]
 [ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b761o83q6eq64" path="res://scenes/props/barrel.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://bo18dp0g57fqp" path="res://scenes/characters/food.tscn" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://b0d0axfed1v72" path="res://scenes/characters/goon_enemy.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://42xp8bjru0oo" path="res://scenes/characters/enemy_tree.tscn" id="9_kek77"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(6, 64)
@@ -59,9 +59,10 @@ duration_between_hits = 2000
 duration_preps_hit = 500
 player = NodePath("../Player")
 
-[node name="Food" parent="ActorsContainer" instance=ExtResource("6_7mycd")]
-position = Vector2(23, 39)
-
 [node name="GoonEnemy" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("7_272bh")]
 position = Vector2(111, 44)
+player = NodePath("../Player")
+
+[node name="EnemyTree" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("9_kek77")]
+position = Vector2(13, 58)
 player = NodePath("../Player")

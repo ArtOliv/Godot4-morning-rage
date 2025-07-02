@@ -435,15 +435,16 @@ size = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 161
 script = ExtResource("2_76oj4")
+max_duration_between_succesful_hit = 2000
 can_respawn = true
 damage = 4
 damage_power = 6
-duration_grounded = 1000.0
 max_health = 30
+duration_grounded = 1000.0
 jump_intesity = 160.0
 knockback_intensity = 10.0
 knockdown_intensity = 70.0
-speed = 40.0
+speed = 0.0
 
 [node name="CharacterSprite" parent="." index="1"]
 texture = ExtResource("3_dyp2m")

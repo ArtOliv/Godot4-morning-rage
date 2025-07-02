@@ -2,17 +2,23 @@ class_name Character
 extends CharacterBody2D
 
 const GRAVITY := 600.0
-
 @export var can_respawn : bool
 @export var damage : int
 @export var damage_power: int
+@export var max_health : int
+
+@export_group("Movement")
 @export var duration_grounded: float
 @export var flight_speed: float
-@export var max_health : int
 @export var jump_intesity : float
 @export var knockback_intensity : float
 @export var knockdown_intensity: float
 @export var speed : float
+
+
+
+
+
 
 @onready var animation_player := $AnimationPlayer
 @onready var character_sprite := $CharacterSprite
@@ -166,7 +172,7 @@ func pickup_collectible():
 		var collectible_areas := collectible_sensor.get_overlapping_areas()
 		var collectible: Collectible = collectible_areas[0]
 		if collectible.type == Collectible.Type.FOOD:
-			pass #o video é faca entao só fiz o generico por enquato 
+			current_health = max_health
 		collectible.queue_free()
 func is_collision_disabled() -> bool:
 	return [State.GROUNDED, State.DEATH, State.FLY].has(state)
@@ -188,7 +194,7 @@ func on_pickup_complete() -> void:
 
 func on_receive_damage(amount: int, direction: Vector2, hit_type: DamageReceiver.HitType) -> void:
 	if can_get_hurt():
-		print(str(amount))
+		attack_combo_index = 0
 		current_health = clamp(current_health - amount, 0, max_health)
 		if current_health == 0 or hit_type == DamageReceiver.HitType.KNOCKDOWN:
 			state = State.FALL
