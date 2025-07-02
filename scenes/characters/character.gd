@@ -50,6 +50,7 @@ var height_speed := 0.0
 var is_last_hit_succesful := false
 var state = State.IDLE
 var time_since_grounded = Time.get_ticks_msec()
+var already_hit := []
 
 func _ready() -> void:
 	damage_emitter.area_entered.connect(on_emit_damage.bind())
@@ -106,6 +107,7 @@ func animations() -> void:
 
 func set_heading():
 	pass
+	
 
 func flip_sprites() -> void:
 	if heading == Vector2.RIGHT:
@@ -200,6 +202,9 @@ func on_receive_damage(amount: int, direction: Vector2, hit_type: DamageReceiver
 			velocity = direction * knockback_intensity
 
 func on_emit_damage(receiver: DamageReceiver) -> void:
+	if receiver in already_hit:
+		return
+	already_hit.append(receiver)
 	var hit_type := DamageReceiver.HitType.NORMAL
 	var direction := Vector2.LEFT if receiver.global_position.x < global_position.x else Vector2.RIGHT
 	var current_damage = damage

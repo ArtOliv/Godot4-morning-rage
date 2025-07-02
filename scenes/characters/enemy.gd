@@ -32,6 +32,7 @@ func input() -> void:
 func prep_attack():
 	if state == State.PREP_ATTACK and (Time.get_ticks_msec() - time_since_prep_hit > duration_preps_hit):
 		state = State.ATTACK
+		already_hit.clear()
 		time_since_last_hit = Time.get_ticks_msec()
 		anim_attacks.shuffle()
 

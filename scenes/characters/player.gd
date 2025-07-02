@@ -19,6 +19,7 @@ func input() -> void:
 			state = State.PICKUP
 		else:
 			state = State.ATTACK
+			already_hit.clear()
 			if is_last_hit_succesful:
 				attack_combo_index = (attack_combo_index+1) % anim_attacks.size()
 				is_last_hit_succesful = false
