@@ -1,13 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl1gksfsy10ru"]
+[gd_scene load_steps=7 format=3 uid="uid://dl1gksfsy10ru"]
 
 [ext_resource type="Script" uid="uid://dc4k5515071iw" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://brdtp6d7son78" path="res://scenes/characters/player.tscn" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://cl03o511fkok0" path="res://actors_container.gd" id="3_5vw27"]
-[ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://b761o83q6eq64" path="res://scenes/props/barrel.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://b0d0axfed1v72" path="res://scenes/characters/goon_enemy.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://42xp8bjru0oo" path="res://scenes/characters/enemy_tree.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://loh3te6dyh87" path="res://scenes/characters/boss.tscn" id="5_lquwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(6, 64)
@@ -45,24 +42,9 @@ shape = SubResource("RectangleShape2D_h2yge")
 y_sort_enabled = true
 script = ExtResource("3_5vw27")
 
-[node name="Barrel" parent="ActorsContainer" instance=ExtResource("5_lquwl")]
-position = Vector2(87, 45)
-collision_mask = 6
-
 [node name="Player" parent="ActorsContainer" instance=ExtResource("2_0xm2m")]
 position = Vector2(43, 43)
 
-[node name="Enemy" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("4_1bvp3")]
-position = Vector2(70, 59)
-collision_mask = 52
-duration_between_hits = 2000
-duration_preps_hit = 500
-player = NodePath("../Player")
-
-[node name="GoonEnemy" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("7_272bh")]
-position = Vector2(111, 44)
-player = NodePath("../Player")
-
-[node name="EnemyTree" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("9_kek77")]
-position = Vector2(13, 58)
+[node name="Boss" parent="ActorsContainer" node_paths=PackedStringArray("player") instance=ExtResource("5_lquwl")]
+position = Vector2(81, 52)
 player = NodePath("../Player")

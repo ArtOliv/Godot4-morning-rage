@@ -23,9 +23,11 @@ func input() -> void:
 	if state == State.ATTACK:
 		velocity = Vector2.ZERO
 		return
-	if can_move():
-		var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		velocity = direction * speed
+	if not can_move():
+		velocity = Vector2.ZERO
+		return
+	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	velocity = direction * speed
 	if can_attack() and Input.is_action_just_pressed("attack"):
 		if can_pickup_collectible():
 			state = State.PICKUP

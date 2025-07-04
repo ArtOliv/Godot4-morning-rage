@@ -99,7 +99,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"on_action_comlpete"
+"method": &"on_action_complete"
 }]
 }
 
@@ -183,7 +183,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"on_action_comlpete"
+"method": &"on_action_complete"
 }]
 }
 
@@ -288,7 +288,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"on_action_comlpete"
+"method": &"on_action_complete"
 }]
 }
 
@@ -319,7 +319,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"on_action_comlpete"
+"method": &"on_action_complete"
 }]
 }
 
@@ -350,7 +350,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"on_action_comlpete"
+"method": &"on_action_complete"
 }]
 }
 
@@ -444,7 +444,6 @@ duration_grounded = 1000.0
 jump_intesity = 160.0
 knockback_intensity = 10.0
 knockdown_intensity = 70.0
-speed = 0.0
 
 [node name="CharacterSprite" parent="." index="1"]
 texture = ExtResource("3_dyp2m")
@@ -477,7 +476,7 @@ shape = SubResource("RectangleShape2D_yewv4")
 collision_layer = 8
 
 [node name="CollisionShape2D" parent="DamageReceiver" index="0"]
-position = Vector2(1, -14)
+position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_76oj4")
 
 [node name="EnemySlots" type="Node2D" parent="." index="6"]

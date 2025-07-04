@@ -15,11 +15,6 @@ const GRAVITY := 600.0
 @export var knockdown_intensity: float
 @export var speed : float
 
-
-
-
-
-
 @onready var animation_player := $AnimationPlayer
 @onready var character_sprite := $CharacterSprite
 @onready var collision_shape := $CollisionShape2D
@@ -29,7 +24,7 @@ const GRAVITY := 600.0
 @onready var damage_receiver : DamageReceiver = $DamageReceiver
 
 enum State{IDLE, WALK, ATTACK, TAKEOFF, JUMP, LAND, JUMPKICK, 
-		   HURT, FALL, GROUNDED, DEATH, FLY, PREP_ATTACK, PICKUP}
+		   HURT, FALL, GROUNDED, DEATH, FLY, PREP_ATTACK, PICKUP, RECOVER}
 
 var anim_attacks := []
 var anim_map : Dictionary= {
@@ -45,7 +40,8 @@ var anim_map : Dictionary= {
 	State.DEATH: "grounded",
 	State.FLY: "fly",
 	State.PREP_ATTACK: "idle",
-	State.PICKUP: "pickup"
+	State.PICKUP: "pickup",
+	State.RECOVER: "recover"
 }
 
 var attack_combo_index := 0
@@ -66,6 +62,7 @@ func _ready() -> void:
 	current_health = max_health
 
 func _process(delta: float) -> void:
+	set_heading()
 	input()
 	movement()
 	animations()
@@ -73,12 +70,12 @@ func _process(delta: float) -> void:
 	prep_attack()
 	grounded()
 	death(delta)
-	set_heading()
 	flip_sprites()
 	character_sprite.position = Vector2.UP * height
 	collision_shape.disabled = is_collision_disabled()
 	damage_emitter.monitoring = is_attacking()
 	damage_receiver.monitorable = can_get_hurt()
+	collateral_damage_emitter.monitoring = state == State.FLY
 	move_and_slide()
 
 func movement() -> void:
@@ -97,7 +94,6 @@ func grounded():
 			state = State.DEATH
 		else:
 			state = State.LAND
-		
 
 func death(delta: float):
 	if state == State.DEATH and not can_respawn:
@@ -113,7 +109,6 @@ func animations() -> void:
 
 func set_heading():
 	pass
-	
 
 func flip_sprites() -> void:
 	if heading == Vector2.RIGHT:
@@ -151,7 +146,7 @@ func can_move() -> bool:
 
 func can_jumpkick() -> bool:
 	return state == State.JUMP
-	
+
 func can_get_hurt() -> bool:
 	return [State.IDLE, State.WALK, State.TAKEOFF, State.LAND, State.PREP_ATTACK].has(state)
 
@@ -174,20 +169,20 @@ func pickup_collectible():
 		if collectible.type == Collectible.Type.FOOD:
 			current_health = max_health
 		collectible.queue_free()
+
 func is_collision_disabled() -> bool:
 	return [State.GROUNDED, State.DEATH, State.FLY].has(state)
-	
 
-func on_action_comlpete() -> void:
+func on_action_complete() -> void:
 	state = State.IDLE
-	
+
 func on_takeoff_complete() -> void:
 	state = State.JUMP
 	height_speed = jump_intesity
 
 func on_land_complete() -> void:
 	state = State.IDLE	
-	
+
 func on_pickup_complete() -> void:
 	state = State.IDLE
 	pickup_collectible()
