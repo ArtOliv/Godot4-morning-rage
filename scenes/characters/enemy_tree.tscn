@@ -6,6 +6,7 @@
 [node name="EnemyTree" instance=ExtResource("1_led0n")]
 duration_between_hits = 2000
 duration_preps_hit = 700
+type = 2
 duration_grounded = 1300.0
 
 [node name="CharacterSprite" parent="." index="1"]

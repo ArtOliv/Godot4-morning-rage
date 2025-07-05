@@ -43,6 +43,7 @@ func input() -> void:
 	if can_jump() and Input.is_action_just_pressed("jump"):
 		state = State.TAKEOFF
 		attack_combo_index = 0
+
 	if can_jumpkick() and Input.is_action_just_pressed("attack"):
 		state = State.JUMPKICK
 

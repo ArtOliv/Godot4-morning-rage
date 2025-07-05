@@ -67,7 +67,7 @@ func can_attack() -> bool:
 func is_vulnerable() -> bool:
 	return state == State.RECOVER
 
-func on_receive_damage(amount: int, direction: Vector2, hit_type: DamageReceiver.HitType) -> void:
+func on_receive_damage(amount: int, direction: Vector2, _hit_type: DamageReceiver.HitType) -> void:
 	if not is_vulnerable():
 		knockback_force = direction * knockback_intensity
 		return
@@ -76,6 +76,7 @@ func on_receive_damage(amount: int, direction: Vector2, hit_type: DamageReceiver
 		state = State.FALL
 		height_speed = knockdown_intensity
 		velocity = direction * knockdown_intensity
+		EntityManager.death_enemy.emit(self)
 	else:
 		velocity = Vector2.ZERO
 		state = State.HURT

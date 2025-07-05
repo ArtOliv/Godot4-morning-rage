@@ -304,6 +304,7 @@ duration_between_hits = 4000
 duration_preps_hit = 1000
 damage = 2
 max_health = 20
+type = 1
 duration_grounded = 1000.0
 flight_speed = 100.0
 knockback_intensity = 10.0

@@ -6,6 +6,7 @@ const GRAVITY := 600.0
 @export var damage : int
 @export var damage_power: int
 @export var max_health : int
+@export var type : Type
 
 @export_group("Movement")
 @export var duration_grounded: float
@@ -25,6 +26,7 @@ const GRAVITY := 600.0
 
 enum State{IDLE, WALK, ATTACK, TAKEOFF, JUMP, LAND, JUMPKICK, 
 		   HURT, FALL, GROUNDED, DEATH, FLY, PREP_ATTACK, PICKUP, RECOVER}
+enum Type{PLAYER, ENEMY, TREE, GOON, BOSS}
 
 var anim_attacks := []
 var anim_map : Dictionary= {
