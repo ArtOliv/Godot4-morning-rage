@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cq05dtiwp61xa"]
+[gd_scene load_steps=8 format=3 uid="uid://cq05dtiwp61xa"]
 
 [ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_lluwt"]
 [ext_resource type="Texture2D" uid="uid://xi7wfrqdnls0" path="res://assets/art/backgrounds/street-background.png" id="2_5wvst"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b0d0axfed1v72" path="res://scenes/characters/goon_enemy.tscn" id="4_2j5k0"]
 [ext_resource type="PackedScene" uid="uid://42xp8bjru0oo" path="res://scenes/characters/enemy_tree.tscn" id="5_w6ome"]
 [ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="6_ea7xw"]
+[ext_resource type="PackedScene" uid="uid://b761o83q6eq64" path="res://scenes/props/barrel.tscn" id="7_2j5k0"]
 
 [node name="Stage-01-Streets" instance=ExtResource("1_lluwt")]
 
@@ -41,6 +42,12 @@ position = Vector2(123, 49)
 
 [node name="EnemyTree2" parent="Checkpoints/Checkpoint2/Enemies" index="3" instance=ExtResource("5_w6ome")]
 position = Vector2(117, 87)
+
+[node name="Barrel" parent="Containers" index="0" instance=ExtResource("7_2j5k0")]
+position = Vector2(68, 47)
+
+[node name="Barrel2" parent="Containers" index="1" instance=ExtResource("7_2j5k0")]
+position = Vector2(175, 54)
 
 [editable path="Checkpoints/Checkpoint"]
 [editable path="Checkpoints/Checkpoint2"]

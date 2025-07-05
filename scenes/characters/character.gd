@@ -61,7 +61,7 @@ func _ready() -> void:
 	damage_receiver.damage_received.connect(on_receive_damage.bind())
 	collateral_damage_emitter.area_entered.connect(on_emit_collateral_damage.bind())
 	collateral_damage_emitter.body_entered.connect(on_wall_hit.bind())
-	current_health = max_health
+	set_health(max_health, type == Character.Type.PLAYER)
 
 func _process(delta: float) -> void:
 	set_heading()
@@ -73,12 +73,18 @@ func _process(delta: float) -> void:
 	grounded()
 	death(delta)
 	flip_sprites()
+	set_sprite_position()
+	setup_collisions()
+	move_and_slide()
+
+func set_sprite_position() -> void:
 	character_sprite.position = Vector2.UP * height
+
+func setup_collisions() -> void:
 	collision_shape.disabled = is_collision_disabled()
 	damage_emitter.monitoring = is_attacking()
 	damage_receiver.monitorable = can_get_hurt()
 	collateral_damage_emitter.monitoring = state == State.FLY
-	move_and_slide()
 
 func movement() -> void:
 	if can_move():
@@ -169,7 +175,7 @@ func pickup_collectible():
 		var collectible_areas := collectible_sensor.get_overlapping_areas()
 		var collectible: Collectible = collectible_areas[0]
 		if collectible.type == Collectible.Type.FOOD:
-			current_health = max_health
+			set_health(max_health)
 		collectible.queue_free()
 
 func is_collision_disabled() -> bool:
@@ -192,7 +198,7 @@ func on_pickup_complete() -> void:
 func on_receive_damage(amount: int, direction: Vector2, hit_type: DamageReceiver.HitType) -> void:
 	if can_get_hurt():
 		attack_combo_index = 0
-		current_health = clamp(current_health - amount, 0, max_health)
+		set_health(current_health - amount)
 		if current_health == 0 or hit_type == DamageReceiver.HitType.KNOCKDOWN:
 			state = State.FALL
 			height_speed = knockdown_intensity
@@ -228,3 +234,8 @@ func on_wall_hit(_wall: AnimatableBody2D):
 	state = State.FALL
 	height_speed = knockdown_intensity
 	velocity = -velocity/2.0
+
+func set_health(health: int, send_signal: bool = true) -> void:
+	current_health = clamp(health, 0, max_health)
+	if send_signal:
+		DamageManager.health_change.emit(type, current_health, max_health)

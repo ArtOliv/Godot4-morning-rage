@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0bm8u2uheod2"]
+
+[ext_resource type="Texture2D" uid="uid://b8jfd64dxy85l" path="res://assets/art/ui/avatars/avatar-goon.png" id="1_f5cxw"]
+[ext_resource type="Script" uid="uid://cnumek3l8b40k" path="res://scenes/ui/ui.gd" id="1_g5kmx"]
+[ext_resource type="Texture2D" uid="uid://dvm6gqfkddjdi" path="res://assets/art/ui/avatars/avatar-player.png" id="2_aac20"]
+[ext_resource type="PackedScene" uid="uid://b30cp07rsjflo" path="res://scenes/ui/healthbar.tscn" id="3_aac20"]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_g5kmx")
+duration_healthbar_visible = 1000
+
+[node name="UIContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EnemyAvatar" type="TextureRect" parent="UIContainer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -11.0
+offset_bottom = 11.0
+grow_horizontal = 0
+texture = ExtResource("1_f5cxw")
+stretch_mode = 2
+
+[node name="PlayerAvatar" type="TextureRect" parent="UIContainer"]
+layout_mode = 0
+offset_right = 11.0
+offset_bottom = 11.0
+texture = ExtResource("2_aac20")
+stretch_mode = 2
+
+[node name="PlayerHealth" parent="UIContainer" instance=ExtResource("3_aac20")]
+offset_left = 12.0
+offset_top = 7.0
+offset_right = 42.0
+offset_bottom = 11.0
+
+[node name="EmenyHealth" parent="UIContainer" instance=ExtResource("3_aac20")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -41.0
+offset_top = 7.0
+offset_right = -11.0
+offset_bottom = 11.0
+grow_horizontal = 0
+is_inverted = true
+
+[node name="WhiteBorder" parent="UIContainer/EmenyHealth" index="0"]
+layout_direction = 3
+scale = Vector2(-30, 1)
+
+[node name="ContentBackground" parent="UIContainer/EmenyHealth" index="1"]
+layout_direction = 3
+scale = Vector2(-28, 1)
+
+[node name="HealthGauge" parent="UIContainer/EmenyHealth" index="2"]
+layout_direction = 3
+scale = Vector2(-10, 1)
+
+[editable path="UIContainer/EmenyHealth"]
