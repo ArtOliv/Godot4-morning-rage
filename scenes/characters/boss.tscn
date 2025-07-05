@@ -1,8 +1,8 @@
 [gd_scene load_steps=17 format=3 uid="uid://loh3te6dyh87"]
 
 [ext_resource type="PackedScene" uid="uid://nhvkbqi22r0o" path="res://scenes/characters/character.tscn" id="1_imw47"]
-[ext_resource type="Texture2D" uid="uid://dxb6xx3vncog" path="res://assets/art/characters/enemy_boss.png" id="2_edpq3"]
 [ext_resource type="Script" uid="uid://ctv5mt3q1eb78" path="res://scenes/characters/boss.gd" id="2_r8uym"]
+[ext_resource type="Texture2D" uid="uid://kwn21tyvtd4a" path="res://assets/art/characters/professor.png" id="3_r8uym"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_edpq3"]
 radius = 2.0
@@ -197,7 +197,7 @@ knockdown_intensity = 100.0
 speed = 15.0
 
 [node name="CharacterSprite" parent="." index="1"]
-texture = ExtResource("2_edpq3")
+texture = ExtResource("3_r8uym")
 centered = false
 offset = Vector2(-24, -48)
 hframes = 10
