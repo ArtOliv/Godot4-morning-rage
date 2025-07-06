@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://2650onk658si"]
+
+[ext_resource type="Theme" uid="uid://b1bieqo2r86g6" path="res://gui_theme.tres" id="1_dvs3h"]
+[ext_resource type="Script" uid="uid://boiupivfckka" path="res://scenes/ui/combo_indicator.gd" id="2_acwea"]
+
+[node name="ComboIndicator" type="Label"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -6.0
+offset_right = 20.0
+grow_vertical = 0
+theme = ExtResource("1_dvs3h")
+text = "x10"
+vertical_alignment = 2
+script = ExtResource("2_acwea")
+duration_combo_timeout = 3000
