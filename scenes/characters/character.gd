@@ -153,7 +153,7 @@ func can_move() -> bool:
 	return state == State.IDLE or state == State.WALK
 
 func can_jumpkick() -> bool:
-	return state == State.JUMP
+	return [State.TAKEOFF, State.JUMP].has(state)
 
 func can_get_hurt() -> bool:
 	return [State.IDLE, State.WALK, State.TAKEOFF, State.LAND, State.PREP_ATTACK].has(state)
@@ -176,6 +176,7 @@ func pickup_collectible():
 		var collectible: Collectible = collectible_areas[0]
 		if collectible.type == Collectible.Type.FOOD:
 			set_health(max_health)
+			SoundPlayer.play(SoundManager.Sound.FOOD)
 		collectible.queue_free()
 
 func is_collision_disabled() -> bool:
@@ -187,6 +188,7 @@ func on_action_complete() -> void:
 func on_takeoff_complete() -> void:
 	state = State.JUMP
 	height_speed = jump_intesity
+	SoundPlayer.play(SoundManager.Sound.SWOOSH)
 
 func on_land_complete() -> void:
 	state = State.IDLE	
@@ -199,13 +201,16 @@ func on_receive_damage(amount: int, direction: Vector2, hit_type: DamageReceiver
 	if can_get_hurt():
 		attack_combo_index = 0
 		set_health(current_health - amount)
+		SoundPlayer.play(SoundManager.Sound.HIT2, true)
 		if current_health == 0 or hit_type == DamageReceiver.HitType.KNOCKDOWN:
 			state = State.FALL
 			height_speed = knockdown_intensity
 			velocity = direction * knockback_intensity
+			DamageManager.heavy_blow_received.emit()
 		elif hit_type == DamageReceiver.HitType.POWER:
 			state = State.FLY
 			velocity = direction * flight_speed
+			DamageManager.heavy_blow_received.emit()
 		else:
 			state = State.HURT
 			velocity = direction * knockback_intensity

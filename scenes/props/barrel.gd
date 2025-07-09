@@ -30,7 +30,8 @@ func on_receive_damage(_damage: int, direction: Vector2, _hit_type: DamageReceiv
 		state = State.DESTROYED
 		velocity = direction * knockback_intensity
 		EntityManager.spawn_collectible.emit(content_type, Collectible.State.FALL, global_position, Vector2.ZERO, 0.0)
-
+		SoundPlayer.play(SoundManager.Sound.HIT1, true)
+		
 func handle_air_time(delta: float) -> void:
 	if state == State.DESTROYED:
 		modulate.a -= delta

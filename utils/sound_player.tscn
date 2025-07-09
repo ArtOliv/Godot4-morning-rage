@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://yshqx4k4xott"]
+
+[ext_resource type="Script" uid="uid://4svi7ih56g6d" path="res://utils/sound_manager.gd" id="1_8g4ko"]
+[ext_resource type="AudioStream" uid="uid://dli2p5t5145fr" path="res://assets/sfx/click.wav" id="2_6jdv3"]
+[ext_resource type="AudioStream" uid="uid://bknwamxh3qjup" path="res://assets/sfx/eat-food.wav" id="3_rvkdu"]
+[ext_resource type="AudioStream" uid="uid://bi6b3wgeyu1d5" path="res://assets/sfx/gogogo.wav" id="4_smdck"]
+[ext_resource type="AudioStream" uid="uid://jc3v757jm3pq" path="res://assets/sfx/grunt.wav" id="5_vraha"]
+[ext_resource type="AudioStream" uid="uid://n5olkdeplrjn" path="res://assets/sfx/hit-1.wav" id="6_0unlo"]
+[ext_resource type="AudioStream" uid="uid://bb8byqjjknwvq" path="res://assets/sfx/hit-2.wav" id="7_kqk87"]
+[ext_resource type="AudioStream" uid="uid://cktc4w8ayh3ly" path="res://assets/sfx/miss.wav" id="8_mtfh1"]
+
+[node name="SoundPlayer" type="Node"]
+script = ExtResource("1_8g4ko")
+
+[node name="SFXClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6jdv3")
+bus = &"SFX"
+
+[node name="SFXFood" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rvkdu")
+bus = &"SFX"
+
+[node name="SFXGogogo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_smdck")
+bus = &"SFX"
+
+[node name="SFXGrunt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_vraha")
+bus = &"SFX"
+
+[node name="SFXHit1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0unlo")
+bus = &"SFX"
+
+[node name="SFXHit2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_kqk87")
+bus = &"SFX"
+
+[node name="SFXSwoosh" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mtfh1")
+bus = &"SFX"
