@@ -27,10 +27,13 @@ func on_spawn_collectible(type: Collectible.Type, initial_state: Collectible.Sta
 	call_deferred("add_child", collectible)
 
 func on_spawn_enemy(enemy_data: EnemyData) -> void:
-	var enemy : Character = ENEMY_MAP[enemy_data.type].instantiate()
-	enemy.global_position = enemy_data.global_position
-	enemy.player = player
-	add_child(enemy)
+	if ENEMY_MAP.has(enemy_data.type):
+		var enemy : Character = ENEMY_MAP[enemy_data.type].instantiate()
+		enemy.global_position = enemy_data.global_position
+		enemy.player = player
+		add_child(enemy)
+	else:
+		print("Tipo de inimigo inválido: %s", str(enemy_data.type))
 
 func on_orphan_actor(orphan: Node2D) -> void:
 	orphan.reparent(self)

@@ -1,6 +1,8 @@
 class_name ActivableControl
 extends HBoxContainer
 
+signal value_change(value: int)
+
 @onready var label : Label = $Label
 
 @export var current_value: int
@@ -15,11 +17,12 @@ var is_active := false
 func _ready() -> void:
 	label.text = text
 	set_value(current_value)
+	
 
 func set_value(value: int):
 	current_value = clampi(value, min_value, max_value)
-	print(current_value)
 	refresh()
+	value_change.emit(current_value)
 
 func refresh():
 	pass

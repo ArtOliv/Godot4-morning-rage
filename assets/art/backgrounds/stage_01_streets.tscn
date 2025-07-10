@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://cq05dtiwp61xa"]
+
+[ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_lluwt"]
+[ext_resource type="Texture2D" uid="uid://xi7wfrqdnls0" path="res://assets/art/backgrounds/street-background.png" id="2_5wvst"]
+[ext_resource type="Texture2D" uid="uid://xsa8pmn45ixq" path="res://assets/art/backgrounds/bar-entrance.png" id="3_4kghc"]
+[ext_resource type="PackedScene" uid="uid://vfehxfoat03c" path="res://scenes/stage/checkpoint.tscn" id="3_mslao"]
+[ext_resource type="PackedScene" uid="uid://b0d0axfed1v72" path="res://scenes/characters/goon_enemy.tscn" id="4_2j5k0"]
+[ext_resource type="Texture2D" uid="uid://j2npvj6koe1b" path="res://assets/art/backgrounds/bar-door.png" id="4_edn1r"]
+[ext_resource type="PackedScene" uid="uid://42xp8bjru0oo" path="res://scenes/characters/enemy_tree.tscn" id="5_w6ome"]
+[ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="6_ea7xw"]
+[ext_resource type="PackedScene" uid="uid://b761o83q6eq64" path="res://scenes/props/barrel.tscn" id="7_2j5k0"]
+
+[node name="Stage-01-Streets" instance=ExtResource("1_lluwt")]
+music = 2
+
+[node name="MainBackground" parent="Backgrounds" index="0"]
+texture = ExtResource("2_5wvst")
+
+[node name="EntraceBar" type="Sprite2D" parent="Backgrounds" index="1"]
+position = Vector2(400, 0)
+texture = ExtResource("3_4kghc")
+centered = false
+
+[node name="DoorEntrace" type="Sprite2D" parent="Backgrounds" index="2"]
+z_index = 1
+z_as_relative = false
+position = Vector2(451, 0)
+texture = ExtResource("4_edn1r")
+centered = false
+
+[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("3_mslao")]
+position = Vector2(100, 0)
+
+[node name="Enemy" parent="Checkpoints/Checkpoint/Enemies" index="0" instance=ExtResource("6_ea7xw")]
+position = Vector2(115, 63)
+
+[node name="Enemy2" parent="Checkpoints/Checkpoint/Enemies" index="1" instance=ExtResource("6_ea7xw")]
+position = Vector2(-40, 63)
+
+[node name="EnemyTree" parent="Checkpoints/Checkpoint/Enemies" index="2" instance=ExtResource("5_w6ome")]
+position = Vector2(9, 91)
+max_health = 20
+
+[node name="EnemyTree2" parent="Checkpoints/Checkpoint/Enemies" index="3" instance=ExtResource("5_w6ome")]
+position = Vector2(120, 88)
+max_health = 20
+
+[node name="GoonEnemy" parent="Checkpoints/Checkpoint/Enemies" index="4" instance=ExtResource("4_2j5k0")]
+position = Vector2(-76, 44)
+duration_between_hits = 4000
+duration_preps_hit = 1000
+
+[node name="GoonEnemy2" parent="Checkpoints/Checkpoint/Enemies" index="5" instance=ExtResource("4_2j5k0")]
+position = Vector2(128, 37)
+duration_between_hits = 4000
+duration_preps_hit = 1000
+
+[node name="Enemy3" parent="Checkpoints/Checkpoint/Enemies" index="6" instance=ExtResource("6_ea7xw")]
+position = Vector2(53, 93)
+
+[node name="EnemyTree3" parent="Checkpoints/Checkpoint/Enemies" index="7" instance=ExtResource("5_w6ome")]
+position = Vector2(-26, 34)
+max_health = 20
+
+[node name="GoonEnemy3" parent="Checkpoints/Checkpoint/Enemies" index="8" instance=ExtResource("4_2j5k0")]
+position = Vector2(128, 37)
+duration_between_hits = 4000
+duration_preps_hit = 1000
+
+[node name="Checkpoint2" parent="Checkpoints" index="1" instance=ExtResource("3_mslao")]
+position = Vector2(200, 0)
+
+[node name="Enemy" parent="Checkpoints/Checkpoint2/Enemies" index="0" instance=ExtResource("6_ea7xw")]
+position = Vector2(-24, 41)
+
+[node name="Enemy2" parent="Checkpoints/Checkpoint2/Enemies" index="1" instance=ExtResource("6_ea7xw")]
+position = Vector2(113, 61)
+
+[node name="GoonEnemy" parent="Checkpoints/Checkpoint2/Enemies" index="2" instance=ExtResource("4_2j5k0")]
+position = Vector2(-33, 60)
+duration_between_hits = 4000
+duration_preps_hit = 1000
+
+[node name="GoonEnemy2" parent="Checkpoints/Checkpoint2/Enemies" index="3" instance=ExtResource("4_2j5k0")]
+position = Vector2(18, 96)
+duration_between_hits = 4000
+duration_preps_hit = 1000
+
+[node name="EnemyTree" parent="Checkpoints/Checkpoint2/Enemies" index="4" instance=ExtResource("5_w6ome")]
+position = Vector2(138, 44)
+max_health = 20
+
+[node name="EnemyTree2" parent="Checkpoints/Checkpoint2/Enemies" index="5" instance=ExtResource("5_w6ome")]
+position = Vector2(138, 44)
+max_health = 20
+
+[node name="Enemy3" parent="Checkpoints/Checkpoint2/Enemies" index="6" instance=ExtResource("6_ea7xw")]
+position = Vector2(-24, 41)
+
+[node name="Enemy4" parent="Checkpoints/Checkpoint2/Enemies" index="7" instance=ExtResource("6_ea7xw")]
+position = Vector2(113, 61)
+
+[node name="GoonEnemy3" parent="Checkpoints/Checkpoint2/Enemies" index="8" instance=ExtResource("4_2j5k0")]
+position = Vector2(-33, 60)
+duration_between_hits = 4000
+duration_preps_hit = 1000
+
+[node name="GoonEnemy4" parent="Checkpoints/Checkpoint2/Enemies" index="9" instance=ExtResource("4_2j5k0")]
+position = Vector2(18, 96)
+duration_between_hits = 4000
+duration_preps_hit = 1000
+
+[node name="EnemyTree3" parent="Checkpoints/Checkpoint2/Enemies" index="10" instance=ExtResource("5_w6ome")]
+position = Vector2(138, 44)
+max_health = 20
+
+[node name="EnemyTree4" parent="Checkpoints/Checkpoint2/Enemies" index="11" instance=ExtResource("5_w6ome")]
+position = Vector2(138, 44)
+max_health = 20
+
+[node name="Checkpoint3" parent="Checkpoints" index="2" instance=ExtResource("3_mslao")]
+position = Vector2(330, 0)
+nb_simultaneous_enemies = 3
+
+[node name="Barrel" parent="Containers" index="0" instance=ExtResource("7_2j5k0")]
+position = Vector2(314, 46)
+
+[node name="Barrel2" parent="Containers" index="1" instance=ExtResource("7_2j5k0")]
+position = Vector2(213, 54)
+
+[editable path="Checkpoints/Checkpoint"]
+[editable path="Checkpoints/Checkpoint2"]
+[editable path="Checkpoints/Checkpoint3"]
