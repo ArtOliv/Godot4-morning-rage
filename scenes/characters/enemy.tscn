@@ -342,7 +342,7 @@ shape = SubResource("RectangleShape2D_3k4es")
 collision_layer = 16
 
 [node name="CollisionShape2D" parent="DamageReceiver" index="0"]
-position = Vector2(0, -16)
+position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_x5khh")
 
 [node name="CollateralDamageEmitterer" parent="." index="6"]

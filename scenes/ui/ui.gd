@@ -16,10 +16,11 @@ var options_screen : OptionsScreen = null
 var time_start_healthbar_visible := Time.get_ticks_msec()
 
 const avatar_map : Dictionary = {
-	Character.Type.BOSS: preload("res://assets/art/ui/avatars/avatar-boss.png"),
+	Character.Type.ENEMY: preload("res://assets/art/ui/avatars/avatar-punk.png"),
 	Character.Type.GOON: preload("res://assets/art/ui/avatars/avatar-goon.png"),
 	Character.Type.TREE: preload("res://assets/art/ui/avatars/avatar-thug.png"),
-	Character.Type.ENEMY: preload("res://assets/art/ui/avatars/avatar-punk.png")
+	Character.Type.BOSS: preload("res://assets/art/ui/avatars/avatar-boss.png"),
+	
 }
 
 func _init() -> void:

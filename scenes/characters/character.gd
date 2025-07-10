@@ -61,7 +61,7 @@ func _ready() -> void:
 	damage_receiver.damage_received.connect(on_receive_damage.bind())
 	collateral_damage_emitter.area_entered.connect(on_emit_collateral_damage.bind())
 	collateral_damage_emitter.body_entered.connect(on_wall_hit.bind())
-	set_health(max_health, type == Character.Type.PLAYER)
+	set_health(max_health, type == Character.Type.PLAYER or type == Character.Type.BOSS)
 
 func _process(delta: float) -> void:
 	set_heading()
@@ -200,7 +200,7 @@ func on_pickup_complete() -> void:
 func on_receive_damage(amount: int, direction: Vector2, hit_type: DamageReceiver.HitType) -> void:
 	if can_get_hurt():
 		attack_combo_index = 0
-		set_health(current_health - amount)
+		set_health(current_health - amount, true)
 		SoundPlayer.play(SoundManager.Sound.HIT2, true)
 		if current_health == 0 or hit_type == DamageReceiver.HitType.KNOCKDOWN:
 			state = State.FALL
@@ -243,4 +243,5 @@ func on_wall_hit(_wall: AnimatableBody2D):
 func set_health(health: int, send_signal: bool = true) -> void:
 	current_health = clamp(health, 0, max_health)
 	if send_signal:
+		print("SIGNAL: Emitindo health_change | tipo =", type, "HP =", current_health)
 		DamageManager.health_change.emit(type, current_health, max_health)

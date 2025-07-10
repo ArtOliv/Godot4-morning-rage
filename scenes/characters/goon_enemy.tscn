@@ -15,6 +15,9 @@ speed = 22.0
 [node name="CharacterSprite" parent="." index="1"]
 texture = ExtResource("2_37dns")
 
+[node name="CollisionShape2D" parent="DamageReceiver" index="0"]
+position = Vector2(1, -13)
+
 [editable path="DamageEmitter"]
 [editable path="DamageReceiver"]
 [editable path="CollateralDamageEmitterer"]
