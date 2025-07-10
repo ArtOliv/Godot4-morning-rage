@@ -73,6 +73,7 @@ func on_receive_damage(amount: int, direction: Vector2, _hit_type: DamageReceive
 		return
 	ComboManager.register_hit.emit()
 	current_health = clamp(current_health - amount, 0, max_health)
+	set_health(current_health - amount, true)
 	if current_health == 0:
 		EntityManager.spawn_spark.emit(position)
 		state = State.FALL

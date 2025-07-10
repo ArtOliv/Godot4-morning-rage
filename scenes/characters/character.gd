@@ -243,5 +243,4 @@ func on_wall_hit(_wall: AnimatableBody2D):
 func set_health(health: int, send_signal: bool = true) -> void:
 	current_health = clamp(health, 0, max_health)
 	if send_signal:
-		print("SIGNAL: Emitindo health_change | tipo =", type, "HP =", current_health)
 		DamageManager.health_change.emit(type, current_health, max_health)
