@@ -285,13 +285,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3k4es"]
-size = Vector2(6, 6)
+size = Vector2(11, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x5khh"]
 size = Vector2(10, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2e6v"]
-size = Vector2(6, 6)
+size = Vector2(5, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ovt1e"]
 size = Vector2(3, 3)
@@ -335,7 +335,7 @@ collision_mask = 8
 monitoring = true
 
 [node name="CollisionShape2D" parent="DamageEmitter" index="0"]
-position = Vector2(8, 0)
+position = Vector2(12, -2)
 shape = SubResource("RectangleShape2D_3k4es")
 
 [node name="DamageReceiver" parent="." index="5"]
@@ -349,7 +349,7 @@ shape = SubResource("RectangleShape2D_x5khh")
 collision_mask = 144
 
 [node name="CollisionShape2D" parent="CollateralDamageEmitterer" index="0"]
-position = Vector2(1, -10)
+position = Vector2(0.5, -10.5)
 shape = SubResource("RectangleShape2D_f2e6v")
 
 [node name="CollectibleSensor" parent="." index="7"]
