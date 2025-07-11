@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0bm8u2uheod2"]
+[gd_scene load_steps=11 format=3 uid="uid://d0bm8u2uheod2"]
 
 [ext_resource type="Texture2D" uid="uid://b8jfd64dxy85l" path="res://assets/art/ui/avatars/avatar-goon.png" id="1_f5cxw"]
 [ext_resource type="Script" uid="uid://cnumek3l8b40k" path="res://scenes/ui/ui.gd" id="1_g5kmx"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bjlnw8okd1p87" path="res://scenes/ui/flickering_texture_rect.tscn" id="7_jcn1r"]
 [ext_resource type="Texture2D" uid="uid://dtypxmt13gdxu" path="res://assets/art/ui/go-go-go.png" id="8_uegxj"]
 [ext_resource type="PackedScene" uid="uid://di67mmnrf2x7l" path="res://scenes/ui/stage_transition.tscn" id="9_uegxj"]
+[ext_resource type="PackedScene" uid="uid://7c3cefcvqlpq" path="res://scenes/ui/lifes_indicator.tscn" id="10_y220t"]
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
@@ -75,11 +76,14 @@ scale = Vector2(-10, 1)
 layout_mode = 1
 
 [node name="ScoreIndicator" parent="UIContainer" instance=ExtResource("6_pfayw")]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 1.0
-offset_right = 50.0
-offset_bottom = 7.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.0
+offset_right = 19.0
+grow_horizontal = 2
+horizontal_alignment = 1
 points_per_life = 1000
 
 [node name="GoIndicator" parent="UIContainer" instance=ExtResource("7_jcn1r")]
@@ -97,5 +101,12 @@ stretch_mode = 2
 
 [node name="StageTransition" parent="UIContainer" instance=ExtResource("9_uegxj")]
 layout_mode = 1
+
+[node name="LifesIndicator" parent="UIContainer" instance=ExtResource("10_y220t")]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 1.0
+offset_right = 21.0
+offset_bottom = 11.0
 
 [editable path="UIContainer/EmenyHealth"]

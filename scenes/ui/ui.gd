@@ -1,6 +1,8 @@
 class_name UI
 extends CanvasLayer
 
+
+
 const GAME_OVER_PREFAB := preload("res://scenes/ui/game_over_screen.tscn")
 const DEATH_SCREEN_PREFAB := preload("res://scenes/ui/death_screen.tscn")
 const OPTIONS_SCREN_PREFAN := preload("res://scenes/ui/options_screen.tscn")
@@ -12,6 +14,7 @@ const OPTIONS_SCREN_PREFAN := preload("res://scenes/ui/options_screen.tscn")
 @onready var player_healthbar : HealthBar = $UIContainer/PlayerHealth
 @onready var score_indicator : ScoreIndicator = $UIContainer/ScoreIndicator
 @onready var stage_transition : StageTransition = $UIContainer/StageTransition
+@onready var lifes_indicator : LifesIndicator = $UIContainer/LifesIndicator
 
 @export var duration_healthbar_visible : int
 
@@ -65,10 +68,12 @@ func on_combo_reset(points: int):
 func on_character_health_change(type: Character.Type, current_health: int, max_health: int) -> void:
 	if type == Character.Type.PLAYER:
 		player_healthbar.refresh(current_health, max_health)
-		if current_health == 0 and death_screen == null:
-			death_screen = DEATH_SCREEN_PREFAB.instantiate()
-			death_screen.game_over.connect(on_game_over.bind())
-			add_child(death_screen)
+		if current_health == 0 and  int(lifes_indicator.text) > 0:
+			DamageManager.player_revive.emit()
+			lifes_indicator.game_over.connect(on_game_over.bind())
+			#death_screen = DEATH_SCREEN_PREFAB.instantiate()
+			#death_screen.game_over.connect(on_game_over.bind())
+			#add_child(death_screen)
 			
 	else:
 		time_start_healthbar_visible = Time.get_ticks_msec()

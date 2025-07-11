@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://7c3cefcvqlpq"]
+
+[ext_resource type="Theme" uid="uid://b1bieqo2r86g6" path="res://gui_theme.tres" id="1_8umua"]
+[ext_resource type="Script" uid="uid://ct1e0uhdai8um" path="res://scenes/ui/lifes_indicator.gd" id="2_44cge"]
+
+[node name="LifesIndicator" type="Label"]
+offset_left = 9.0
+offset_right = 18.0
+offset_bottom = 10.0
+theme = ExtResource("1_8umua")
+theme_override_colors/font_color = Color(0.773856, 2.23808e-06, 9.62615e-07, 1)
+text = "2"
+script = ExtResource("2_44cge")
+lifes = 3

@@ -1,9 +1,10 @@
 class_name Player
 extends Character
 
-const REVIVE_HIGHT := 80
+const REVIVE_HIGHT := 20
 
 @export var max_duration_between_succesful_hit : int 
+@export var lifes : int
 
 @onready var enemy_slots : Array = $EnemySlots.get_children()
 
@@ -16,6 +17,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	super._process(delta)
+	
 	process_time_between_combos()
 	
 func process_time_between_combos():
@@ -25,7 +27,7 @@ func process_time_between_combos():
 func on_player_revive():
 	current_health = max_health
 	state = State.JUMP
-	height = REVIVE_HIGHT
+	height = 0
 
 func input() -> void:
 	if state == State.ATTACK:

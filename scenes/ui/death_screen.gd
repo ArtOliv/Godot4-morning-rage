@@ -1,7 +1,7 @@
 class_name DeathScreen
 extends MarginContainer
 
-signal game_over
+
 
 @onready var timer : Timer = $Timer
 @onready var countdown_label : Label = $Border/MarginContainer/Contents/VBoxContainer/CountdownLabel
@@ -28,5 +28,5 @@ func on_time_timeout():
 		current_count -= 1
 		refresh()
 	else:
-		game_over.emit()
+		#game_over.emit()
 		queue_free()
