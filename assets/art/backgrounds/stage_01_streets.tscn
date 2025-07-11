@@ -132,6 +132,9 @@ position = Vector2(314, 46)
 [node name="Barrel2" parent="Containers" index="1" instance=ExtResource("7_2j5k0")]
 position = Vector2(213, 54)
 
+[node name="PlayerLocalSpawn" parent="." index="5"]
+position = Vector2(340, 52)
+
 [editable path="Checkpoints/Checkpoint"]
 [editable path="Checkpoints/Checkpoint2"]
 [editable path="Checkpoints/Checkpoint3"]

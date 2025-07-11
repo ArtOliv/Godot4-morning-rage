@@ -18,6 +18,7 @@ func _init() -> void:
 	EntityManager.spawn_enemy.connect(on_spawn_enemy.bind())
 	EntityManager.orphan_actor.connect(on_orphan_actor.bind())
 	EntityManager.spawn_spark.connect(on_spawn_spark.bind())
+	DamageManager.player_revive.connect(on_player_revive.bind())
 
 func on_spawn_collectible(type: Collectible.Type, initial_state: Collectible.State, collectible_global_position: Vector2, collectible_direction: Vector2, _initial_height: float):
 	var collectible: Collectible = PREFAB_MAP[type].instantiate()
@@ -42,3 +43,11 @@ func on_spawn_spark(spark_position: Vector2):
 	var spark_instance := SPARK_PREFAB.instantiate()
 	spark_instance.position = spark_position
 	add_child(spark_instance)
+
+
+func on_player_revive():
+	for child in get_children():
+		if child is Character:
+			var character : Character = child as Character
+			if character.type != Character.Type.PLAYER:
+				character.on_receive_damage(0, Vector2.ZERO, DamageReceiver.HitType.KNOCKDOWN)

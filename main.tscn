@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dl1gksfsy10ru"]
+[gd_scene load_steps=7 format=3 uid="uid://dl1gksfsy10ru"]
 
 [ext_resource type="Script" uid="uid://dc4k5515071iw" path="res://main.gd" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://brdtp6d7son78" path="res://scenes/characters/player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://d0bm8u2uheod2" path="res://scenes/ui/ui.tscn" id="2_7mycd"]
 [ext_resource type="PackedScene" uid="uid://cq05dtiwp61xa" path="res://assets/art/backgrounds/stage_01_streets.tscn" id="2_lquwl"]
 [ext_resource type="Script" uid="uid://cl03o511fkok0" path="res://actors_container.gd" id="3_5vw27"]
@@ -15,7 +14,9 @@ script = ExtResource("1_h2yge")
 
 [node name="UI" parent="." instance=ExtResource("2_7mycd")]
 
-[node name="Stage-01-Streets" parent="." instance=ExtResource("2_lquwl")]
+[node name="StageContainer" type="Node2D" parent="."]
+
+[node name="Stage-01-Streets" parent="StageContainer" instance=ExtResource("2_lquwl")]
 
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(50, 32)
@@ -46,10 +47,6 @@ sync_to_physics = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/InvisibleWalls/RightWall"]
 shape = SubResource("RectangleShape2D_h2yge")
 
-[node name="ActorsContainer" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+[node name="ActorsContainer" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("3_5vw27")
-player = NodePath("Player")
-
-[node name="Player" parent="ActorsContainer" instance=ExtResource("2_0xm2m")]
-position = Vector2(43, 43)

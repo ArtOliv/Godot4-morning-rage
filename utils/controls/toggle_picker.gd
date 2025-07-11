@@ -6,7 +6,7 @@ extends ActivableControl
 func refresh():
 	value_label.text = "ON" if current_value == 1 else "OFF"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_active and has_input_toggle():
 		set_value(1 if current_value == 0 else 0)
 

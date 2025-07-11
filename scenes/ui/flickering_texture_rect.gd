@@ -20,7 +20,7 @@ func start_flickering():
 	time_start_last_flicker = Time.get_ticks_msec()
 	SoundPlayer.play(SoundManager.Sound.GOGOGO)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_flickering and (Time.get_ticks_msec() - time_start_last_flicker > duration_flicker):
 		if texture == null:
 			if flickers_left == 0:

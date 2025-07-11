@@ -13,7 +13,7 @@ func refresh():
 	for i in range(current_value, ticks.size()):
 		ticks[i].texture = TICKS_OFF
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_active and Input.is_action_just_pressed("ui_left"):
 		set_value(current_value - 1)
 	if is_active and Input.is_action_just_pressed("ui_right"):

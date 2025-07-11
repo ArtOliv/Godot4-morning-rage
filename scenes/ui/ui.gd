@@ -1,6 +1,8 @@
 class_name UI
 extends CanvasLayer
 
+const GAME_OVER_PREFAB := preload("res://scenes/ui/game_over_screen.tscn")
+const DEATH_SCREEN_PREFAB := preload("res://scenes/ui/death_screen.tscn")
 const OPTIONS_SCREN_PREFAN := preload("res://scenes/ui/options_screen.tscn")
 
 @onready var combo_indicator : ComboIndicator = $UIContainer/ComboIndicator
@@ -12,6 +14,8 @@ const OPTIONS_SCREN_PREFAN := preload("res://scenes/ui/options_screen.tscn")
 
 @export var duration_healthbar_visible : int
 
+var game_over_screen: GameOverScreen = null
+var death_screen: DeathScreen = null
 var options_screen : OptionsScreen = null
 var time_start_healthbar_visible := Time.get_ticks_msec()
 
@@ -59,6 +63,11 @@ func on_combo_reset(points: int):
 func on_character_health_change(type: Character.Type, current_health: int, max_health: int) -> void:
 	if type == Character.Type.PLAYER:
 		player_healthbar.refresh(current_health, max_health)
+		if current_health == 0 and death_screen == null:
+			death_screen = DEATH_SCREEN_PREFAB.instantiate()
+			death_screen.game_over.connect(on_game_over.bind())
+			add_child(death_screen)
+			
 	else:
 		time_start_healthbar_visible = Time.get_ticks_msec()
 		enemy_avatar.texture = avatar_map[type]
@@ -66,5 +75,12 @@ func on_character_health_change(type: Character.Type, current_health: int, max_h
 		enemy_avatar.visible = true
 		enemy_healthbar.visible = true
 
-func on_checkpoint_complete():
+func on_game_over():
+	if game_over_screen == null:
+		game_over_screen = GAME_OVER_PREFAB.instantiate()
+		game_over_screen.set_score(score_indicator.real_score)
+		add_child(game_over_screen)
+
+
+func on_checkpoint_complete(_checkpoint: Checkpoint):
 	go_indicator.start_flickering()

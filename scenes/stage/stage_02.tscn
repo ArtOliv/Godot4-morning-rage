@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://drwau1jjnrag0"]
+
+[ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_phv34"]
+[ext_resource type="Texture2D" uid="uid://bd5vpg8lbgt4i" path="res://assets/art/backgrounds/bar-background.png" id="2_vmg5w"]
+[ext_resource type="PackedScene" uid="uid://vfehxfoat03c" path="res://scenes/stage/checkpoint.tscn" id="3_4x7ym"]
+[ext_resource type="PackedScene" uid="uid://42xp8bjru0oo" path="res://scenes/characters/enemy_tree.tscn" id="4_mf2es"]
+[ext_resource type="PackedScene" uid="uid://b0d0axfed1v72" path="res://scenes/characters/goon_enemy.tscn" id="5_t56eq"]
+[ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="6_q3rdv"]
+
+[node name="Stage-02" instance=ExtResource("1_phv34")]
+music = 3
+
+[node name="MainBackground" parent="Backgrounds" index="0"]
+texture = ExtResource("2_vmg5w")
+
+[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("3_4x7ym")]
+position = Vector2(70, 0)
+nb_simultaneous_enemies = 4
+
+[node name="EnemyTree" parent="Checkpoints/Checkpoint/Enemies" index="0" instance=ExtResource("4_mf2es")]
+position = Vector2(123, 53)
+
+[node name="EnemyTree2" parent="Checkpoints/Checkpoint/Enemies" index="1" instance=ExtResource("4_mf2es")]
+position = Vector2(52, 88)
+
+[node name="GoonEnemy" parent="Checkpoints/Checkpoint/Enemies" index="2" instance=ExtResource("5_t56eq")]
+position = Vector2(105, 96)
+
+[node name="GoonEnemy2" parent="Checkpoints/Checkpoint/Enemies" index="3" instance=ExtResource("5_t56eq")]
+position = Vector2(151, 33)
+
+[node name="GoonEnemy3" parent="Checkpoints/Checkpoint/Enemies" index="4" instance=ExtResource("5_t56eq")]
+position = Vector2(-18, 58)
+
+[node name="Enemy" parent="Checkpoints/Checkpoint/Enemies" index="5" instance=ExtResource("6_q3rdv")]
+position = Vector2(27, 84)
+
+[node name="Enemy2" parent="Checkpoints/Checkpoint/Enemies" index="6" instance=ExtResource("6_q3rdv")]
+position = Vector2(-20, 37)
+
+[node name="PlayerLocalSpawn" parent="." index="5"]
+position = Vector2(23, 49)
+
+[editable path="Checkpoints/Checkpoint"]

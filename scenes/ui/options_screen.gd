@@ -25,7 +25,7 @@ func refresh():
 	for i in range(0, activables.size()):
 		activables[i].set_active(current_selection_index==i)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	handle_input()
 
 func handle_input():
