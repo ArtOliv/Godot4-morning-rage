@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://cowafddlbnin1"]
+
+[ext_resource type="Texture2D" uid="uid://xi7wfrqdnls0" path="res://assets/art/backgrounds/street-background.png" id="1_anq1i"]
+[ext_resource type="Theme" uid="uid://b1bieqo2r86g6" path="res://gui_theme.tres" id="2_mkhoe"]
+
+[node name="MenuScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_anq1i")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 2
+offset_left = 4.0
+offset_top = 21.0
+offset_right = 100.0
+offset_bottom = 33.0
+theme = ExtResource("2_mkhoe")
+theme_override_colors/font_color = Color(0.705964, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.686275)
+theme_override_font_sizes/font_size = 12
+text = "MORNING RAGE"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="TextureRect"]
+layout_mode = 2
+offset_left = 3.0
+offset_top = 53.0
+offset_right = 99.0
+offset_bottom = 65.0
+theme = ExtResource("2_mkhoe")
+text = "PRESS START"
+horizontal_alignment = 1
