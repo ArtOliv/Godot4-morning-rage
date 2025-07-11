@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0bm8u2uheod2"]
+[gd_scene load_steps=12 format=3 uid="uid://d0bm8u2uheod2"]
 
 [ext_resource type="Texture2D" uid="uid://b8jfd64dxy85l" path="res://assets/art/ui/avatars/avatar-goon.png" id="1_f5cxw"]
 [ext_resource type="Script" uid="uid://cnumek3l8b40k" path="res://scenes/ui/ui.gd" id="1_g5kmx"]
+[ext_resource type="PackedScene" uid="uid://cowafddlbnin1" path="res://scenes/ui/menu_screen.tscn" id="2_4kltc"]
 [ext_resource type="Texture2D" uid="uid://dvm6gqfkddjdi" path="res://assets/art/ui/avatars/avatar-player.png" id="2_aac20"]
 [ext_resource type="PackedScene" uid="uid://b30cp07rsjflo" path="res://scenes/ui/healthbar.tscn" id="3_aac20"]
 [ext_resource type="PackedScene" uid="uid://2650onk658si" path="res://scenes/ui/combo_indicator.tscn" id="5_0dwhk"]
@@ -23,6 +24,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MenuScreen" parent="UIContainer" instance=ExtResource("2_4kltc")]
+layout_mode = 1
 
 [node name="EnemyAvatar" type="TextureRect" parent="UIContainer"]
 layout_mode = 1
@@ -82,6 +86,7 @@ anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -19.0
 offset_right = 19.0
+offset_bottom = 23.0
 grow_horizontal = 2
 horizontal_alignment = 1
 points_per_life = 1000

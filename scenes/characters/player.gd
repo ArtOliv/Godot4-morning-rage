@@ -88,3 +88,6 @@ func free_slot(enemy: Enemy):
 	)
 	if target_slots.size() == 1:
 		target_slots[0].free_up()
+
+func get_max_health():
+	return max_health

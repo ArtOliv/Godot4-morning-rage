@@ -2,12 +2,13 @@ class_name UI
 extends CanvasLayer
 
 
-
+const MENU_SCREEN_PREFAB := preload("res://scenes/ui/menu_screen.tscn")
 const GAME_OVER_PREFAB := preload("res://scenes/ui/game_over_screen.tscn")
 const DEATH_SCREEN_PREFAB := preload("res://scenes/ui/death_screen.tscn")
 const OPTIONS_SCREN_PREFAN := preload("res://scenes/ui/options_screen.tscn")
 
 @onready var combo_indicator : ComboIndicator = $UIContainer/ComboIndicator
+@onready var player_avatar: TextureRect = $UIContainer/PlayerAvatar
 @onready var enemy_avatar : TextureRect = $UIContainer/EnemyAvatar
 @onready var go_indicator : FlickeringTextureRect = $UIContainer/GoIndicator
 @onready var enemy_healthbar : HealthBar = $UIContainer/EmenyHealth
@@ -15,6 +16,7 @@ const OPTIONS_SCREN_PREFAN := preload("res://scenes/ui/options_screen.tscn")
 @onready var score_indicator : ScoreIndicator = $UIContainer/ScoreIndicator
 @onready var stage_transition : StageTransition = $UIContainer/StageTransition
 @onready var lifes_indicator : LifesIndicator = $UIContainer/LifesIndicator
+@onready var menu_screen : MenuScreen = $UIContainer/MenuScreen
 
 @export var duration_healthbar_visible : int
 
@@ -38,14 +40,20 @@ func _init() -> void:
 	StageManager.stage_complete.connect(on_stage_complete.bind())
 
 func _ready() -> void:
+	player_avatar.visible = false
+	player_healthbar.visible = false
+	score_indicator.visible = false
+	combo_indicator.visible = false
+	lifes_indicator.visible = false
 	enemy_avatar.visible = false
 	enemy_healthbar.visible = false
 	combo_indicator.combo_reset.connect(on_combo_reset.bind())
 
 func _process(_delta: float) -> void:
-	if enemy_healthbar.visible and (Time.get_ticks_msec() - time_start_healthbar_visible > duration_healthbar_visible):
-		enemy_avatar.visible = false
-		enemy_healthbar.visible = false
+	if menu_screen == null:
+		if enemy_healthbar.visible and (Time.get_ticks_msec() - time_start_healthbar_visible > duration_healthbar_visible):
+			enemy_avatar.visible = false
+			enemy_healthbar.visible = false
 	handle_input()
 
 func handle_input():
@@ -57,6 +65,18 @@ func handle_input():
 			get_tree().paused = true
 		else:
 			unpause()
+	if Input.is_action_just_pressed("ui_accept") and menu_screen != null:
+		menu_screen.queue_free()
+		menu_screen = null
+		visibility()
+
+func visibility():
+	player_avatar.visible = true
+	player_healthbar.visible = true
+	player_healthbar.refresh(10, 10)
+	score_indicator.visible = true
+	combo_indicator.visible = true
+	lifes_indicator.visible = true
 
 func unpause():
 	options_screen.queue_free()
@@ -67,24 +87,25 @@ func on_combo_reset(points: int):
 	
 
 func on_character_health_change(type: Character.Type, current_health: int, max_health: int) -> void:
-	if type == Character.Type.PLAYER:
-		player_healthbar.refresh(current_health, max_health)
-		if current_health == 0:
-			time_death = Time.get_ticks_msec()
-		if current_health == 0 and  int(lifes_indicator.text) > 0:
-			death_screen = DEATH_SCREEN_PREFAB.instantiate()
-			add_child(death_screen)
-			lifes_indicator.game_over.connect(on_game_over.bind())
-			#death_screen = DEATH_SCREEN_PREFAB.instantiate()
-			#death_screen.game_over.connect(on_game_over.bind())
-			#add_child(death_screen)
-			
-	else:
-		time_start_healthbar_visible = Time.get_ticks_msec()
-		enemy_avatar.texture = avatar_map[type]
-		enemy_healthbar.refresh(current_health, max_health)
-		enemy_avatar.visible = true
-		enemy_healthbar.visible = true
+	if menu_screen == null:
+		if type == Character.Type.PLAYER:
+			player_healthbar.refresh(current_health, max_health)
+			if current_health == 0:
+				time_death = Time.get_ticks_msec()
+			if current_health == 0 and  int(lifes_indicator.text) > 0:
+				death_screen = DEATH_SCREEN_PREFAB.instantiate()
+				add_child(death_screen)
+				lifes_indicator.game_over.connect(on_game_over.bind())
+				#death_screen = DEATH_SCREEN_PREFAB.instantiate()
+				#death_screen.game_over.connect(on_game_over.bind())
+				#add_child(death_screen)
+				
+		else:
+			time_start_healthbar_visible = Time.get_ticks_msec()
+			enemy_avatar.texture = avatar_map[type]
+			enemy_healthbar.refresh(current_health, max_health)
+			enemy_avatar.visible = true
+			enemy_healthbar.visible = true
 
 func on_game_over():
 	if game_over_screen == null:
