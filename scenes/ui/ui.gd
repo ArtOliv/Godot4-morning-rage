@@ -95,7 +95,7 @@ func on_character_health_change(type: Character.Type, current_health: int, max_h
 			if current_health == 0 and  int(lifes_indicator.text) > 0:
 				death_screen = DEATH_SCREEN_PREFAB.instantiate()
 				add_child(death_screen)
-				lifes_indicator.game_over.connect(on_game_over.bind())
+				EntityManager.game_over.connect(on_game_over.bind())
 				#death_screen = DEATH_SCREEN_PREFAB.instantiate()
 				#death_screen.game_over.connect(on_game_over.bind())
 				#add_child(death_screen)

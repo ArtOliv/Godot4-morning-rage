@@ -1,7 +1,6 @@
 class_name LifesIndicator
 extends Label
 
-signal game_over
 
 @export var lifes : int
 
@@ -16,7 +15,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if int(text) == 0:
-		game_over.emit()
+		EntityManager.game_over.emit()
 
 func refresh():
 	text = str(current_lifes)

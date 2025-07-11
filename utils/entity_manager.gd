@@ -5,3 +5,4 @@ signal spawn_enemy(enemy_data: EnemyData)
 signal death_enemy(enemy: Character)
 signal spawn_spark(spark_position: Vector2)
 signal orphan_actor(orphan: Node2D)
+signal game_over
