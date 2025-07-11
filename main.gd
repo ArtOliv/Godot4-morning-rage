@@ -9,6 +9,7 @@ const STAGE_PREFAB := [
 @onready var actors_container :Node2D= $ActorsContainer
 @onready var camera := $Camera
 @onready var stage_container: Node2D = $StageContainer
+@onready var stage_trasition: StageTransition = $UI/UIContainer/StageTransition
 
 var initial_position_camera := Vector2.ZERO
 var current_stage_index := -1
@@ -20,7 +21,7 @@ func _ready() -> void:
 	initial_position_camera = camera.position
 	StageManager.checkpoint_start.connect(on_checkpoint_start.bind())
 	StageManager.checkpoint_complete.connect(on_checkpoint_complete.bind())
-	StageManager.stage_complete.connect(load_next_stage.bind())
+	StageManager.stage_interim.connect(load_next_stage.bind())
 	load_next_stage()
 
 func _process(_delta: float) -> void:
@@ -33,6 +34,8 @@ func _process(_delta: float) -> void:
 		player.position = stage.get_player_spawn_location()
 		actors_container.player = player
 		camera.position = initial_position_camera
+		camera.reset_smoothing()
+		stage_trasition.end_transition()	
 		
 	if player != null and not is_camera_locked and player.position.x > camera.position.x:
 		camera.position.x = player.position.x

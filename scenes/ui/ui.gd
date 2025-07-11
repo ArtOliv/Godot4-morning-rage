@@ -11,6 +11,7 @@ const OPTIONS_SCREN_PREFAN := preload("res://scenes/ui/options_screen.tscn")
 @onready var enemy_healthbar : HealthBar = $UIContainer/EmenyHealth
 @onready var player_healthbar : HealthBar = $UIContainer/PlayerHealth
 @onready var score_indicator : ScoreIndicator = $UIContainer/ScoreIndicator
+@onready var stage_transition : StageTransition = $UIContainer/StageTransition
 
 @export var duration_healthbar_visible : int
 
@@ -30,6 +31,7 @@ const avatar_map : Dictionary = {
 func _init() -> void:
 	DamageManager.health_change.connect(on_character_health_change.bind())
 	StageManager.checkpoint_complete.connect(on_checkpoint_complete.bind())
+	StageManager.stage_complete.connect(on_stage_complete.bind())
 
 func _ready() -> void:
 	enemy_avatar.visible = false
@@ -84,3 +86,6 @@ func on_game_over():
 
 func on_checkpoint_complete(_checkpoint: Checkpoint):
 	go_indicator.start_flickering()
+
+func on_stage_complete():
+	stage_transition.start_transition()

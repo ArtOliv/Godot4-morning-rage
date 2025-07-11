@@ -50,3 +50,6 @@ shape = SubResource("RectangleShape2D_h2yge")
 [node name="ActorsContainer" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("3_5vw27")
+
+[editable path="UI"]
+[editable path="UI/UIContainer/EmenyHealth"]
