@@ -15,7 +15,7 @@ func _ready() -> void:
 	refresh()
 
 func _process(_delta: float) -> void:
-	if int(text)  == 0:
+	if int(text) == 0:
 		game_over.emit()
 
 func refresh():

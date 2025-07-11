@@ -22,6 +22,7 @@ var game_over_screen: GameOverScreen = null
 var death_screen: DeathScreen = null
 var options_screen : OptionsScreen = null
 var time_start_healthbar_visible := Time.get_ticks_msec()
+var time_death := Time.get_ticks_msec()
 
 const avatar_map : Dictionary = {
 	Character.Type.ENEMY: preload("res://assets/art/ui/avatars/avatar-punk.png"),
@@ -68,8 +69,11 @@ func on_combo_reset(points: int):
 func on_character_health_change(type: Character.Type, current_health: int, max_health: int) -> void:
 	if type == Character.Type.PLAYER:
 		player_healthbar.refresh(current_health, max_health)
+		if current_health == 0:
+			time_death = Time.get_ticks_msec()
 		if current_health == 0 and  int(lifes_indicator.text) > 0:
-			DamageManager.player_revive.emit()
+			death_screen = DEATH_SCREEN_PREFAB.instantiate()
+			add_child(death_screen)
 			lifes_indicator.game_over.connect(on_game_over.bind())
 			#death_screen = DEATH_SCREEN_PREFAB.instantiate()
 			#death_screen.game_over.connect(on_game_over.bind())
