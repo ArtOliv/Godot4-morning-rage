@@ -16,8 +16,6 @@ const OPTIONS_SCREN_PREFAN := preload("res://scenes/ui/options_screen.tscn")
 @onready var score_indicator : ScoreIndicator = $UIContainer/ScoreIndicator
 @onready var stage_transition : StageTransition = $UIContainer/StageTransition
 @onready var lifes_indicator : LifesIndicator = $UIContainer/LifesIndicator
-@onready var menu_screen : MenuScreen = $UIContainer/MenuScreen
-
 @export var duration_healthbar_visible : int
 
 var index_player := 0
@@ -62,10 +60,9 @@ func _ready() -> void:
 	combo_indicator.combo_reset.connect(on_combo_reset.bind())
 
 func _process(_delta: float) -> void:
-	if menu_screen == null:
-		if enemy_healthbar.visible and (Time.get_ticks_msec() - time_start_healthbar_visible > duration_healthbar_visible):
-			enemy_avatar.visible = false
-			enemy_healthbar.visible = false
+	if enemy_healthbar.visible and (Time.get_ticks_msec() - time_start_healthbar_visible > duration_healthbar_visible):
+		enemy_avatar.visible = false
+		enemy_healthbar.visible = false
 	handle_input()
 
 func handle_input():
@@ -104,26 +101,25 @@ func on_combo_reset(points: int):
 	
 
 func on_character_health_change(type: Character.Type, current_health: int, max_health: int) -> void:
-	if menu_screen == null:
-		if type == Character.Type.PLAYER or type == Character.Type.PLAYER_ALT:
-			player_avatar.texture = player_avatar_map[index_player]
-			player_healthbar.refresh(current_health, max_health)
-			if current_health == 0:
-				time_death = Time.get_ticks_msec()
-			if current_health == 0 and  int(lifes_indicator.text) > 0:
-				death_screen = DEATH_SCREEN_PREFAB.instantiate()
-				add_child(death_screen)
-				EntityManager.game_over.connect(on_game_over.bind())
-				#death_screen = DEATH_SCREEN_PREFAB.instantiate()
-				#death_screen.game_over.connect(on_game_over.bind())
-				#add_child(death_screen)
-				
-		else:
-			time_start_healthbar_visible = Time.get_ticks_msec()
-			enemy_avatar.texture = avatar_map[type]
-			enemy_healthbar.refresh(current_health, max_health)
-			enemy_avatar.visible = true
-			enemy_healthbar.visible = true
+	if type == Character.Type.PLAYER or type == Character.Type.PLAYER_ALT:
+		player_avatar.texture = player_avatar_map[index_player]
+		player_healthbar.refresh(current_health, max_health)
+		if current_health == 0:
+			time_death = Time.get_ticks_msec()
+		if current_health == 0 and  int(lifes_indicator.text) > 0:
+			death_screen = DEATH_SCREEN_PREFAB.instantiate()
+			add_child(death_screen)
+			EntityManager.game_over.connect(on_game_over.bind())
+			#death_screen = DEATH_SCREEN_PREFAB.instantiate()
+			#death_screen.game_over.connect(on_game_over.bind())
+			#add_child(death_screen)
+			
+	else:
+		time_start_healthbar_visible = Time.get_ticks_msec()
+		enemy_avatar.texture = avatar_map[type]
+		enemy_healthbar.refresh(current_health, max_health)
+		enemy_avatar.visible = true
+		enemy_healthbar.visible = true
 
 func on_game_over():
 	if game_over_screen == null:

@@ -20,12 +20,11 @@ func _process(_delta: float) -> void:
 		menu_options = MENU_OPTIONS_PREFAB.instantiate()
 		add_child(menu_options)
 		menu_options.start_game.connect(on_cena.bind())
-	if cena != null:
-		cena.end.connect(on_start_game.bind())
 
 func on_cena(_index: int):
 	cena = CENA_PREFAB.instantiate()
 	add_child(cena)
+	cena.end.connect(on_start_game.bind())
 
 func on_start_game():
 	main = MAIN_PREFAB.instantiate()
