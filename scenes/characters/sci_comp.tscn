@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cxkjtovuv13go" path="res://assets/art/characters/sci_comp.png" id="2_v7v5b"]
 
 [node name="SciComp" instance=ExtResource("1_0fkep")]
+duration_between_hits = 1500
 damage = 3
 type = 8
 

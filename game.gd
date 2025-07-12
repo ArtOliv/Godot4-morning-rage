@@ -5,14 +5,12 @@ const MAIN_PREFAB := preload("res://main.tscn")
 const CENA_PREFAB := preload("res://scenes/ui/cena.tscn")
 
 @onready var menu_screen : MenuScreen = $WorldEnvironment/MenuScreen
-@onready var camera : Camera2D = $Camera2D
 
 var menu_options : MenuOptions = null
 var main : Main = null
 var cena : Cena = null
 
-func _ready() -> void:
-	camera.make_current()
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):

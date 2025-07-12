@@ -16,6 +16,3 @@ environment = SubResource("Environment_e2o6t")
 [node name="MenuScreen" parent="WorldEnvironment" instance=ExtResource("1_80nbo")]
 offset_top = 1.0
 offset_bottom = 1.0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(50, 32)

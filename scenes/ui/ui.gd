@@ -6,6 +6,7 @@ const MENU_SCREEN_PREFAB := preload("res://scenes/ui/menu_screen.tscn")
 const GAME_OVER_PREFAB := preload("res://scenes/ui/game_over_screen.tscn")
 const DEATH_SCREEN_PREFAB := preload("res://scenes/ui/death_screen.tscn")
 const OPTIONS_SCREN_PREFAN := preload("res://scenes/ui/options_screen.tscn")
+const GAME_COMPLETE_SCREEN := preload("res://scenes/ui/game_complete_screen.tscn")
 
 @onready var combo_indicator : ComboIndicator = $UIContainer/ComboIndicator
 @onready var player_avatar: TextureRect = $UIContainer/PlayerAvatar
@@ -25,6 +26,7 @@ var death_screen: DeathScreen = null
 var options_screen : OptionsScreen = null
 var time_start_healthbar_visible := Time.get_ticks_msec()
 var time_death := Time.get_ticks_msec()
+var game_complete_screen :GameOverScreen= null
 
 const player_avatar_map := [
 	preload("res://assets/art/ui/avatars/avatar-player1.png"),
@@ -47,6 +49,7 @@ func _init() -> void:
 	StageManager.checkpoint_complete.connect(on_checkpoint_complete.bind())
 	StageManager.stage_complete.connect(on_stage_complete.bind())
 	OptionsManager.player_alt_selected.connect(on_player_alt_selected.bind())
+	StageManager.game_complete.connect(on_game_complete.bind())
 
 func _ready() -> void:
 	if OptionsManager.is_player_alt_selected:
@@ -128,6 +131,11 @@ func on_game_over():
 		game_over_screen.set_score(score_indicator.real_score)
 		add_child(game_over_screen)
 
+func on_game_complete():
+	if game_complete_screen == null:
+		game_complete_screen = GAME_COMPLETE_SCREEN.instantiate()
+		game_complete_screen.set_score(score_indicator.real_score)
+		add_child(game_complete_screen)
 
 func on_checkpoint_complete(_checkpoint: Checkpoint):
 	go_indicator.start_flickering()

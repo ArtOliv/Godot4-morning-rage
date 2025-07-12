@@ -37,8 +37,8 @@ func on_enemy_death(_enemy: Character) -> void:
 	#if active_enemy_counter == 0 and enemy_data.size() == 0 and Main.current_stage_index == 2:
 	#	StageManager.game_complete.emit()
 	if active_enemy_counter == 0 and enemy_data.size() == 0:
-		if StageManager.player_revived:
-			StageManager.player_revived = false
-			return  # Ignora o avanço de fase
-		StageManager.checkpoint_complete.emit(self)
-		queue_free()
+		if _enemy.type == Character.Type.BOSS:
+			StageManager.game_complete.emit()  # Cancela avanço automático
+		else:
+			StageManager.checkpoint_complete.emit(self)
+			queue_free()

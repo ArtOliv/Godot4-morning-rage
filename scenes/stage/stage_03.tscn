@@ -1,12 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6wbed6r7rudi"]
+[gd_scene load_steps=6 format=3 uid="uid://b6wbed6r7rudi"]
 
 [ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_iy5kv"]
 [ext_resource type="Texture2D" uid="uid://bd5vpg8lbgt4i" path="res://assets/art/backgrounds/bar-background.png" id="2_74u0c"]
+[ext_resource type="PackedScene" uid="uid://vfehxfoat03c" path="res://scenes/stage/checkpoint.tscn" id="3_4bdwj"]
+[ext_resource type="PackedScene" uid="uid://loh3te6dyh87" path="res://scenes/characters/boss.tscn" id="3_ui4ra"]
+[ext_resource type="PackedScene" uid="uid://b761o83q6eq64" path="res://scenes/props/barrel.tscn" id="5_12dj8"]
 
 [node name="Stage-03" instance=ExtResource("1_iy5kv")]
 
 [node name="MainBackground" parent="Backgrounds" index="0"]
 texture = ExtResource("2_74u0c")
 
+[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("3_4bdwj")]
+position = Vector2(100, 1)
+
+[node name="Boss" parent="Checkpoints/Checkpoint/Enemies" index="0" instance=ExtResource("3_ui4ra")]
+position = Vector2(80, 49)
+
+[node name="Barrel" parent="Containers" index="0" instance=ExtResource("5_12dj8")]
+position = Vector2(46, 52)
+
 [node name="PlayerLocalSpawn" parent="." index="5"]
-position = Vector2(26, 48)
+position = Vector2(17, 48)
+
+[editable path="Checkpoints/Checkpoint"]

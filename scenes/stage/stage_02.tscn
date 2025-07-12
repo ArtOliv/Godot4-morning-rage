@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drwau1jjnrag0"]
+[gd_scene load_steps=9 format=3 uid="uid://drwau1jjnrag0"]
 
 [ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_phv34"]
 [ext_resource type="Texture2D" uid="uid://bd5vpg8lbgt4i" path="res://assets/art/backgrounds/bar-background.png" id="2_vmg5w"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dakuwyggyckat" path="res://scenes/characters/green.tscn" id="5_mf2es"]
 [ext_resource type="PackedScene" uid="uid://dlsgdiirho8ej" path="res://scenes/characters/student.tscn" id="6_t56eq"]
 [ext_resource type="PackedScene" uid="uid://clwbv8esl64pk" path="res://scenes/characters/sci_comp.tscn" id="7_q3rdv"]
+[ext_resource type="PackedScene" uid="uid://b761o83q6eq64" path="res://scenes/props/barrel.tscn" id="8_mf2es"]
 
 [node name="Stage-02" instance=ExtResource("1_phv34")]
 music = 3
@@ -51,7 +52,110 @@ position = Vector2(76, 101)
 [node name="SciComp3" parent="Checkpoints/Checkpoint/Enemies" index="10" instance=ExtResource("7_q3rdv")]
 position = Vector2(-46, 59)
 
+[node name="Checkpoint2" parent="Checkpoints" index="1" instance=ExtResource("3_4x7ym")]
+position = Vector2(70, 0)
+nb_simultaneous_enemies = 4
+
+[node name="Enemies" parent="Checkpoints/Checkpoint2" index="0"]
+position = Vector2(182, 0)
+
+[node name="RedEye" parent="Checkpoints/Checkpoint2/Enemies" index="0" instance=ExtResource("4_4x7ym")]
+position = Vector2(-14, 59)
+
+[node name="RedEye2" parent="Checkpoints/Checkpoint2/Enemies" index="1" instance=ExtResource("4_4x7ym")]
+position = Vector2(134, 57)
+
+[node name="Green" parent="Checkpoints/Checkpoint2/Enemies" index="2" instance=ExtResource("5_mf2es")]
+position = Vector2(-13, 39)
+
+[node name="Green3" parent="Checkpoints/Checkpoint2/Enemies" index="3" instance=ExtResource("5_mf2es")]
+position = Vector2(35, 133)
+
+[node name="Green2" parent="Checkpoints/Checkpoint2/Enemies" index="4" instance=ExtResource("5_mf2es")]
+position = Vector2(110, 44)
+
+[node name="Student" parent="Checkpoints/Checkpoint2/Enemies" index="5" instance=ExtResource("6_t56eq")]
+position = Vector2(60, 101)
+
+[node name="Student2" parent="Checkpoints/Checkpoint2/Enemies" index="6" instance=ExtResource("6_t56eq")]
+position = Vector2(-36, 47)
+
+[node name="Student3" parent="Checkpoints/Checkpoint2/Enemies" index="7" instance=ExtResource("6_t56eq")]
+position = Vector2(24, 77)
+
+[node name="SciComp" parent="Checkpoints/Checkpoint2/Enemies" index="8" instance=ExtResource("7_q3rdv")]
+position = Vector2(78, 93)
+
+[node name="SciComp2" parent="Checkpoints/Checkpoint2/Enemies" index="9" instance=ExtResource("7_q3rdv")]
+position = Vector2(47, 77)
+
+[node name="SciComp3" parent="Checkpoints/Checkpoint2/Enemies" index="10" instance=ExtResource("7_q3rdv")]
+position = Vector2(-46, 59)
+
+[node name="PlayerDetectionArea" parent="Checkpoints/Checkpoint2" index="1"]
+position = Vector2(181, 0)
+
+[node name="CheckpointPlayArea" parent="Checkpoints/Checkpoint2" index="2"]
+position = Vector2(183, 1)
+
+[node name="Checkpoint3" parent="Checkpoints" index="2" instance=ExtResource("3_4x7ym")]
+position = Vector2(270, 0)
+nb_simultaneous_enemies = 4
+
+[node name="Enemies" parent="Checkpoints/Checkpoint3" index="0"]
+position = Vector2(182, 0)
+
+[node name="RedEye" parent="Checkpoints/Checkpoint3/Enemies" index="0" instance=ExtResource("4_4x7ym")]
+position = Vector2(-14, 59)
+
+[node name="RedEye2" parent="Checkpoints/Checkpoint3/Enemies" index="1" instance=ExtResource("4_4x7ym")]
+position = Vector2(134, 57)
+
+[node name="Green" parent="Checkpoints/Checkpoint3/Enemies" index="2" instance=ExtResource("5_mf2es")]
+position = Vector2(-13, 39)
+
+[node name="Green3" parent="Checkpoints/Checkpoint3/Enemies" index="3" instance=ExtResource("5_mf2es")]
+position = Vector2(35, 133)
+
+[node name="Green2" parent="Checkpoints/Checkpoint3/Enemies" index="4" instance=ExtResource("5_mf2es")]
+position = Vector2(110, 44)
+
+[node name="Student" parent="Checkpoints/Checkpoint3/Enemies" index="5" instance=ExtResource("6_t56eq")]
+position = Vector2(60, 101)
+
+[node name="Student2" parent="Checkpoints/Checkpoint3/Enemies" index="6" instance=ExtResource("6_t56eq")]
+position = Vector2(-36, 47)
+
+[node name="Student3" parent="Checkpoints/Checkpoint3/Enemies" index="7" instance=ExtResource("6_t56eq")]
+position = Vector2(24, 77)
+
+[node name="SciComp" parent="Checkpoints/Checkpoint3/Enemies" index="8" instance=ExtResource("7_q3rdv")]
+position = Vector2(78, 93)
+
+[node name="SciComp2" parent="Checkpoints/Checkpoint3/Enemies" index="9" instance=ExtResource("7_q3rdv")]
+position = Vector2(47, 77)
+
+[node name="SciComp3" parent="Checkpoints/Checkpoint3/Enemies" index="10" instance=ExtResource("7_q3rdv")]
+position = Vector2(-46, 59)
+
+[node name="PlayerDetectionArea" parent="Checkpoints/Checkpoint3" index="1"]
+position = Vector2(181, 0)
+
+[node name="CheckpointPlayArea" parent="Checkpoints/Checkpoint3" index="2"]
+position = Vector2(183, 1)
+
+[node name="Barrel" parent="Containers" index="0" instance=ExtResource("8_mf2es")]
+position = Vector2(40, 47)
+
+[node name="Barrel2" parent="Containers" index="1" instance=ExtResource("8_mf2es")]
+position = Vector2(222, 52)
+
+[node name="Barrel3" parent="Containers" index="2" instance=ExtResource("8_mf2es")]
+position = Vector2(410, 52)
+
 [node name="PlayerLocalSpawn" parent="." index="5"]
 position = Vector2(23, 49)
 
 [editable path="Checkpoints/Checkpoint"]
+[editable path="Checkpoints/Checkpoint2"]
+[editable path="Checkpoints/Checkpoint3"]

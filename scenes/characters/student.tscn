@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://fmeksfygree1" path="res://assets/art/characters/student.png" id="2_1xqm5"]
 
 [node name="Student" instance=ExtResource("1_30ov7")]
+duration_between_hits = 1200
 damage = 2
 type = 5
 

@@ -9,10 +9,12 @@ signal start_game(index: int)
 
 var current_selection_index := 0
 
+
 func _ready() -> void:
 	player_1.press.connect(on_player1_selected.bind())
 	player_2.press.connect(on_player2_selected.bind())
 	start_game.connect(_on_start_game.bind())
+	
 
 func _process(_delta: float) -> void:
 	handle_input()

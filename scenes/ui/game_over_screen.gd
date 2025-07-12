@@ -14,3 +14,7 @@ func set_score(score: int):
 
 func on_timer_timeout():
 	score_indicator.add_points(total_score)
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):  
+		get_tree().quit()
