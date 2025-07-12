@@ -53,5 +53,5 @@ func on_player_revive():
 	for child in get_children():
 		if child is Character:
 			var character : Character = child as Character
-			if character.type != Character.Type.PLAYER:
+			if character.type != Character.Type.PLAYER and character.type != Character.Type.PLAYER_ALT:
 				character.on_receive_damage(0, Vector2.ZERO, DamageReceiver.HitType.KNOCKDOWN)

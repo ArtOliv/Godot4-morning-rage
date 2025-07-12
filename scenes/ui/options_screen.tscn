@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://b1bieqo2r86g6" path="res://gui_theme.tres" id="1_fpwlp"]
 [ext_resource type="PackedScene" uid="uid://bj1cfu1sux7x1" path="res://utils/controls/range_picker.tscn" id="2_8sxsw"]
 [ext_resource type="PackedScene" uid="uid://or5u71p06k7m" path="res://utils/controls/toggle_picker.tscn" id="3_7bvjn"]
-[ext_resource type="PackedScene" uid="uid://b32cflp5pvndx" path="res://utils/controls/label_picker.tscn" id="4_eckhm"]
+[ext_resource type="PackedScene" uid="uid://b32cflp5pvndx" path="res://assets/art/ui/avatars/label_picker.tscn" id="4_eckhm"]
 
 [node name="OptionsScreen" type="Control"]
 layout_mode = 3

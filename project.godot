@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Morning Rage"
-run/main_scene="uid://dl1gksfsy10ru"
+run/main_scene="uid://ckd5mv8snaflb"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -24,7 +24,6 @@ ComboManager="*res://utils/combo_manager.gd"
 MusicPlayer="*res://utils/music_player.tscn"
 SoundPlayer="*res://utils/sound_player.tscn"
 OptionsManager="*res://utils/options_manager.gd"
-Main="*res://main.gd"
 
 [display]
 

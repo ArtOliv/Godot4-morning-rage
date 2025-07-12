@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://qt2puowr00tw"]
+
+[ext_resource type="Theme" uid="uid://b1bieqo2r86g6" path="res://gui_theme.tres" id="1_is25q"]
+[ext_resource type="Script" uid="uid://igh5a32byjti" path="res://scenes/ui/menu_options.gd" id="1_rrgn5"]
+[ext_resource type="Texture2D" uid="uid://bscon6ck5fboa" path="res://assets/art/ui/avatars/avatar-player1.png" id="2_r11a1"]
+[ext_resource type="PackedScene" uid="uid://b32cflp5pvndx" path="res://assets/art/ui/avatars/label_picker.tscn" id="2_snv1p"]
+[ext_resource type="Texture2D" uid="uid://ca8i111tcilh8" path="res://assets/art/ui/avatars/avatar-player - alt.png" id="4_rrgn5"]
+
+[node name="MenuOptions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rrgn5")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = -5.0
+offset_right = 105.0
+offset_bottom = 64.0
+theme_override_constants/margin_left = 13
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 13
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_is25q")
+text = "MENU"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_r11a1")
+
+[node name="Player1" parent="ColorRect/MarginContainer/VBoxContainer" instance=ExtResource("2_snv1p")]
+layout_mode = 2
+text = "MIGUEL"
+
+[node name="TextureRect2" type="TextureRect" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("4_rrgn5")
+
+[node name="Player2" parent="ColorRect/MarginContainer/VBoxContainer" instance=ExtResource("2_snv1p")]
+layout_mode = 2
+text = "ARTHUR"

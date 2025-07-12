@@ -34,6 +34,8 @@ func on_player_enter(_player: Player) -> void:
 
 func on_enemy_death(_enemy: Character) -> void:
 	active_enemy_counter -= 1
+	#if active_enemy_counter == 0 and enemy_data.size() == 0 and Main.current_stage_index == 2:
+	#	StageManager.game_complete.emit()
 	if active_enemy_counter == 0 and enemy_data.size() == 0:
 		StageManager.checkpoint_complete.emit(self)
 		queue_free()

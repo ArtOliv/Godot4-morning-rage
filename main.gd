@@ -1,6 +1,10 @@
+class_name Main
 extends Node2D
 
-const PLAYER_PREFAB := preload("res://scenes/characters/player.tscn")
+const PLAYER_PREFAB := [
+	preload("res://scenes/characters/player.tscn"),
+	preload("res://scenes/characters/player_alt.tscn")
+	]
 const STAGE_PREFAB := [
 	preload("res://assets/art/backgrounds/stage_01_streets.tscn"),
 	preload("res://scenes/stage/stage_02.tscn"),
@@ -17,12 +21,21 @@ var current_stage_index := -1
 var is_camera_locked := false
 var is_stage_ready_for_loading := false
 var player: Player = null
+var player_index := 0
+
+
 
 func _ready() -> void:
 	initial_position_camera = camera.position
 	StageManager.checkpoint_start.connect(on_checkpoint_start.bind())
 	StageManager.checkpoint_complete.connect(on_checkpoint_complete.bind())
 	StageManager.stage_interim.connect(load_next_stage.bind())
+	
+	if OptionsManager.is_player_alt_selected:
+		player_index = 1
+	else:
+		player_index = 0
+	
 	load_next_stage()
 
 func _process(_delta: float) -> void:
@@ -30,12 +43,13 @@ func _process(_delta: float) -> void:
 		is_stage_ready_for_loading = false
 		var stage: Stage = STAGE_PREFAB[current_stage_index].instantiate()
 		stage_container.add_child(stage)
-		player = PLAYER_PREFAB.instantiate()
+		player = PLAYER_PREFAB[player_index].instantiate()
 		actors_container.add_child(player)
 		player.position = stage.get_player_spawn_location()
 		actors_container.player = player
 		camera.position = initial_position_camera
 		camera.reset_smoothing()
+		camera.make_current()
 		stage_trasition.end_transition()	
 		
 	if player != null and not is_camera_locked and player.position.x > camera.position.x:
@@ -57,4 +71,5 @@ func on_checkpoint_start() -> void:
 func on_checkpoint_complete(_checkpoint: Checkpoint) -> void:
 	is_camera_locked = false
 
-	
+func on_player_alt_selected():
+	player_index = 1

@@ -1,7 +1,7 @@
 class_name UI
 extends CanvasLayer
 
-
+const MENU_OPTIONS_PREFAB := preload("res://scenes/ui/menu_options.tscn")
 const MENU_SCREEN_PREFAB := preload("res://scenes/ui/menu_screen.tscn")
 const GAME_OVER_PREFAB := preload("res://scenes/ui/game_over_screen.tscn")
 const DEATH_SCREEN_PREFAB := preload("res://scenes/ui/death_screen.tscn")
@@ -20,16 +20,18 @@ const OPTIONS_SCREN_PREFAN := preload("res://scenes/ui/options_screen.tscn")
 
 @export var duration_healthbar_visible : int
 
+var index_player := 0
+var menu_options: MenuOptions = null
 var game_over_screen: GameOverScreen = null
 var death_screen: DeathScreen = null
 var options_screen : OptionsScreen = null
 var time_start_healthbar_visible := Time.get_ticks_msec()
 var time_death := Time.get_ticks_msec()
 
-const player_avatar_map: Dictionary = {
-	Character.Type.PLAYER: preload("res://assets/art/ui/avatars/avatar-player1.png"),
-	Character.Type.PLAYER_ALT: preload("res://assets/art/characters/playeralt.png"),
-}
+const player_avatar_map := [
+	preload("res://assets/art/ui/avatars/avatar-player1.png"),
+	preload("res://assets/art/ui/avatars/avatar-player - alt.png"),
+]
 
 const avatar_map : Dictionary = {
 	Character.Type.ENEMY: preload("res://assets/art/ui/avatars/avatar-bald.png"),
@@ -46,13 +48,15 @@ func _init() -> void:
 	DamageManager.health_change.connect(on_character_health_change.bind())
 	StageManager.checkpoint_complete.connect(on_checkpoint_complete.bind())
 	StageManager.stage_complete.connect(on_stage_complete.bind())
+	OptionsManager.player_alt_selected.connect(on_player_alt_selected.bind())
 
 func _ready() -> void:
-	player_avatar.visible = false
-	player_healthbar.visible = false
-	score_indicator.visible = false
-	combo_indicator.visible = false
-	lifes_indicator.visible = false
+	if OptionsManager.is_player_alt_selected:
+		index_player = 1
+	else:
+		index_player = 0
+	
+	visibility()
 	enemy_avatar.visible = false
 	enemy_healthbar.visible = false
 	combo_indicator.combo_reset.connect(on_combo_reset.bind())
@@ -73,13 +77,18 @@ func handle_input():
 			get_tree().paused = true
 		else:
 			unpause()
-	if Input.is_action_just_pressed("ui_accept") and menu_screen != null:
-		menu_screen.queue_free()
-		menu_screen = null
-		visibility()
+
+	#if Input.is_action_just_pressed("ui_accept") and menu_screen != null:
+	#	menu_screen.queue_free()
+	#	menu_screen = null
+	#	menu_options = MENU_OPTIONS_PREFAB.instantiate()
+	#	menu_options.start_game.connect(_on_start_game)  # novo
+	#	add_child(menu_options)
+	#	visibility()
 
 func visibility():
 	player_avatar.visible = true
+	player_avatar.texture = player_avatar_map[index_player]
 	player_healthbar.visible = true
 	player_healthbar.refresh(10, 10)
 	score_indicator.visible = true
@@ -96,8 +105,8 @@ func on_combo_reset(points: int):
 
 func on_character_health_change(type: Character.Type, current_health: int, max_health: int) -> void:
 	if menu_screen == null:
-		if type == Character.Type.PLAYER:
-			player_avatar.texture = player_avatar_map[type]
+		if type == Character.Type.PLAYER or type == Character.Type.PLAYER_ALT:
+			player_avatar.texture = player_avatar_map[index_player]
 			player_healthbar.refresh(current_health, max_health)
 			if current_health == 0:
 				time_death = Time.get_ticks_msec()
@@ -128,3 +137,6 @@ func on_checkpoint_complete(_checkpoint: Checkpoint):
 
 func on_stage_complete():
 	stage_transition.start_transition()
+
+func on_player_alt_selected():
+	index_player = 1
