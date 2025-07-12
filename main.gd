@@ -1,6 +1,7 @@
 class_name Main
 extends Node2D
 
+
 const PLAYER_PREFAB := [
 	preload("res://scenes/characters/player.tscn"),
 	preload("res://scenes/characters/player_alt.tscn")
@@ -22,7 +23,6 @@ var is_camera_locked := false
 var is_stage_ready_for_loading := false
 var player: Player = null
 var player_index := 0
-
 
 
 func _ready() -> void:

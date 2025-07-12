@@ -128,6 +128,7 @@ func on_character_health_change(type: Character.Type, current_health: int, max_h
 func on_game_over():
 	if game_over_screen == null:
 		game_over_screen = GAME_OVER_PREFAB.instantiate()
+		print(score_indicator.real_score)
 		game_over_screen.set_score(score_indicator.real_score)
 		add_child(game_over_screen)
 

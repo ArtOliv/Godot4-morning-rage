@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbed4s2v0dbn0"]
+
+[ext_resource type="Script" uid="uid://crnsav013d4l8" path="res://scenes/ui/cena.gd" id="1_3aw1d"]
+[ext_resource type="FontFile" uid="uid://bs4solpcmnvdr" path="res://assets/fonts/DS-DIGI.TTF" id="1_soyag"]
+[ext_resource type="Theme" uid="uid://b1bieqo2r86g6" path="res://gui_theme.tres" id="2_sr2pp"]
+[ext_resource type="Script" uid="uid://15h0028pc8w0" path="res://scenes/ui/timer.gd" id="4_v2pu8"]
+
+[sub_resource type="Environment" id="Environment_3aw1d"]
+background_mode = 1
+
+[node name="Cena" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3aw1d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3aw1d")
+
+[node name="ColorRect" type="ColorRect" parent="WorldEnvironment"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="WorldEnvironment"]
+offset_left = 13.0
+offset_top = 2.0
+offset_right = 89.0
+offset_bottom = 38.0
+theme_override_colors/font_color = Color(0.705882, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_soyag")
+theme_override_font_sizes/font_size = 35
+text = "09:50"
+
+[node name="Label2" type="Label" parent="WorldEnvironment"]
+offset_left = -8.0
+offset_top = 44.0
+offset_right = 112.0
+offset_bottom = 67.0
+theme = ExtResource("2_sr2pp")
+text = "DROGA! VOU ME ATRASAR
+PRA AULA"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="WorldEnvironment"]
+wait_time = 2.277
+autostart = true
+script = ExtResource("4_v2pu8")

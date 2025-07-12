@@ -3,8 +3,8 @@ extends Control
 
 signal start_game(index: int)
 
-@onready var player_1 : LabelPicker= $ColorRect/MarginContainer/VBoxContainer/Player1
-@onready var player_2 : LabelPicker= $ColorRect/MarginContainer/VBoxContainer/Player2
+@onready var player_1 : LabelPicker= $WorldEnvironment/ColorRect/MarginContainer/VBoxContainer/Player1
+@onready var player_2 : LabelPicker= $WorldEnvironment/ColorRect/MarginContainer/VBoxContainer/Player2
 @onready var activables: Array[ActivableControl] = [player_1, player_2]
 
 var current_selection_index := 0
