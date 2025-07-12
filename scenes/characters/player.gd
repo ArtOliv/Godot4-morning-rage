@@ -28,6 +28,7 @@ func on_player_revive():
 	current_health = max_health
 	state = State.JUMP
 	height = 0
+	StageManager.player_revived = true
 
 func input() -> void:
 	if state == State.ATTACK:

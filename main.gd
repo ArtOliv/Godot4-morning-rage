@@ -22,7 +22,7 @@ var current_stage_index := -1
 var is_camera_locked := false
 var is_stage_ready_for_loading := false
 var player: Player = null
-var player_index := 0
+var player_index := 0 
 
 
 func _ready() -> void:
