@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://2td2ahrxpiey"]
+
+[ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="1_j4jc8"]
+[ext_resource type="Texture2D" uid="uid://bxib84kaf270p" path="res://assets/art/characters/red_eye.png" id="2_45rld"]
+
+[node name="RedEye" instance=ExtResource("1_j4jc8")]
+damage = 2
+type = 7
+
+[node name="CharacterSprite" parent="." index="1"]
+texture = ExtResource("2_45rld")
+
+[editable path="DamageEmitter"]
+[editable path="DamageReceiver"]
+[editable path="CollateralDamageEmitterer"]

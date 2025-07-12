@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6wbed6r7rudi"]
+
+[ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_iy5kv"]
+[ext_resource type="Texture2D" uid="uid://bd5vpg8lbgt4i" path="res://assets/art/backgrounds/bar-background.png" id="2_74u0c"]
+
+[node name="Stage-03" instance=ExtResource("1_iy5kv")]
+
+[node name="MainBackground" parent="Backgrounds" index="0"]
+texture = ExtResource("2_74u0c")
+
+[node name="PlayerLocalSpawn" parent="." index="5"]
+position = Vector2(26, 48)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://clwbv8esl64pk"]
+
+[ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="1_0fkep"]
+[ext_resource type="Texture2D" uid="uid://cxkjtovuv13go" path="res://assets/art/characters/sci_comp.png" id="2_v7v5b"]
+
+[node name="SciComp" instance=ExtResource("1_0fkep")]
+damage = 3
+type = 8
+
+[node name="CharacterSprite" parent="." index="1"]
+texture = ExtResource("2_v7v5b")
+
+[node name="CollisionShape2D" parent="DamageReceiver" index="0"]
+position = Vector2(0, -13)
+
+[editable path="DamageEmitter"]
+[editable path="DamageReceiver"]
+[editable path="CollateralDamageEmitterer"]

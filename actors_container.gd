@@ -8,7 +8,11 @@ const ENEMY_MAP := {
 	Character.Type.ENEMY: preload("res://scenes/characters/enemy.tscn"),
 	Character.Type.TREE: preload("res://scenes/characters/enemy_tree.tscn"),
 	Character.Type.GOON: preload("res://scenes/characters/goon_enemy.tscn"),
-	Character.Type.BOSS: preload("res://scenes/characters/boss.tscn")
+	Character.Type.BOSS: preload("res://scenes/characters/boss.tscn"),
+	Character.Type.STUDENT: preload("res://scenes/characters/student.tscn"),
+	Character.Type.GREEN: preload("res://scenes/characters/green.tscn"),
+	Character.Type.RED_EYE: preload("res://scenes/characters/red_eye.tscn"),
+	Character.Type.SCI_COMP: preload("res://scenes/characters/sci_comp.tscn"),
 }
 
 @export var player: Player

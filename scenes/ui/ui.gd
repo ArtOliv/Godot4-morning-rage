@@ -26,12 +26,20 @@ var options_screen : OptionsScreen = null
 var time_start_healthbar_visible := Time.get_ticks_msec()
 var time_death := Time.get_ticks_msec()
 
+const player_avatar_map: Dictionary = {
+	Character.Type.PLAYER: preload("res://assets/art/ui/avatars/avatar-player1.png"),
+	Character.Type.PLAYER_ALT: preload("res://assets/art/characters/playeralt.png"),
+}
+
 const avatar_map : Dictionary = {
-	Character.Type.ENEMY: preload("res://assets/art/ui/avatars/avatar-punk.png"),
+	Character.Type.ENEMY: preload("res://assets/art/ui/avatars/avatar-bald.png"),
 	Character.Type.GOON: preload("res://assets/art/ui/avatars/avatar-goon.png"),
-	Character.Type.TREE: preload("res://assets/art/ui/avatars/avatar-thug.png"),
-	Character.Type.BOSS: preload("res://assets/art/ui/avatars/avatar-boss.png"),
-	
+	Character.Type.TREE: preload("res://assets/art/ui/avatars/avatar-tree.png"),
+	Character.Type.BOSS: preload("res://assets/art/ui/avatars/avatar-mester.png"),
+	Character.Type.STUDENT: preload("res://assets/art/ui/avatars/avatar-student.png"),
+	Character.Type.GREEN: preload("res://assets/art/ui/avatars/avatar-green.png"),
+	Character.Type.RED_EYE: preload("res://assets/art/ui/avatars/avatar-red-eye.png"),
+	Character.Type.SCI_COMP: preload("res://assets/art/ui/avatars/avatar-sci-comp.png"),
 }
 
 func _init() -> void:
@@ -89,6 +97,7 @@ func on_combo_reset(points: int):
 func on_character_health_change(type: Character.Type, current_health: int, max_health: int) -> void:
 	if menu_screen == null:
 		if type == Character.Type.PLAYER:
+			player_avatar.texture = player_avatar_map[type]
 			player_healthbar.refresh(current_health, max_health)
 			if current_health == 0:
 				time_death = Time.get_ticks_msec()

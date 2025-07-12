@@ -133,7 +133,7 @@ position = Vector2(314, 46)
 position = Vector2(213, 54)
 
 [node name="PlayerLocalSpawn" parent="." index="5"]
-position = Vector2(32, 52)
+position = Vector2(352, 52)
 
 [editable path="Checkpoints/Checkpoint"]
 [editable path="Checkpoints/Checkpoint2"]

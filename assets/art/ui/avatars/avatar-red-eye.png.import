@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm8eb4q4ox1ye"
-path="res://.godot/imported/estudanteC3 (1).png-c51747ff40b64f59e6d8155ddbb34290.ctex"
+uid="uid://f7xydtfs7uh1"
+path="res://.godot/imported/avatar-red-eye.png-40746712da3ffc68aab7482b97f187fc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/characters/estudanteC3 (1).png"
-dest_files=["res://.godot/imported/estudanteC3 (1).png-c51747ff40b64f59e6d8155ddbb34290.ctex"]
+source_file="res://assets/art/ui/avatars/avatar-red-eye.png"
+dest_files=["res://.godot/imported/avatar-red-eye.png-40746712da3ffc68aab7482b97f187fc.ctex"]
 
 [params]
 

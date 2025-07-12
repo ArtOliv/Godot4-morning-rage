@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dakuwyggyckat"]
+
+[ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="1_nlhcv"]
+[ext_resource type="Texture2D" uid="uid://cexiy7b88qby4" path="res://assets/art/characters/green.png" id="2_ba6et"]
+
+[node name="Green" instance=ExtResource("1_nlhcv")]
+damage = 2
+type = 6
+
+[node name="CharacterSprite" parent="." index="1"]
+texture = ExtResource("2_ba6et")
+
+[editable path="DamageEmitter"]
+[editable path="DamageReceiver"]
+[editable path="CollateralDamageEmitterer"]

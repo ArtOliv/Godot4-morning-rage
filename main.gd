@@ -3,7 +3,8 @@ extends Node2D
 const PLAYER_PREFAB := preload("res://scenes/characters/player.tscn")
 const STAGE_PREFAB := [
 	preload("res://assets/art/backgrounds/stage_01_streets.tscn"),
-	preload("res://scenes/stage/stage_02.tscn")
+	preload("res://scenes/stage/stage_02.tscn"),
+	preload("res://scenes/stage/stage_03.tscn")
 ]
 
 @onready var actors_container :Node2D= $ActorsContainer

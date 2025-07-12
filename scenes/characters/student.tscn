@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlsgdiirho8ej"]
+
+[ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="1_30ov7"]
+[ext_resource type="Texture2D" uid="uid://fmeksfygree1" path="res://assets/art/characters/student.png" id="2_1xqm5"]
+
+[node name="Student" instance=ExtResource("1_30ov7")]
+damage = 2
+type = 5
+
+[node name="CharacterSprite" parent="." index="1"]
+texture = ExtResource("2_1xqm5")
+
+[editable path="DamageEmitter"]
+[editable path="DamageReceiver"]
+[editable path="CollateralDamageEmitterer"]

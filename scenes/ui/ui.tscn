@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://b8jfd64dxy85l" path="res://assets/art/ui/avatars/avatar-goon.png" id="1_f5cxw"]
 [ext_resource type="Script" uid="uid://cnumek3l8b40k" path="res://scenes/ui/ui.gd" id="1_g5kmx"]
 [ext_resource type="PackedScene" uid="uid://cowafddlbnin1" path="res://scenes/ui/menu_screen.tscn" id="2_4kltc"]
-[ext_resource type="Texture2D" uid="uid://dvm6gqfkddjdi" path="res://assets/art/ui/avatars/avatar-player.png" id="2_aac20"]
 [ext_resource type="PackedScene" uid="uid://b30cp07rsjflo" path="res://scenes/ui/healthbar.tscn" id="3_aac20"]
+[ext_resource type="Texture2D" uid="uid://bscon6ck5fboa" path="res://assets/art/ui/avatars/avatar-player1.png" id="4_4kltc"]
 [ext_resource type="PackedScene" uid="uid://2650onk658si" path="res://scenes/ui/combo_indicator.tscn" id="5_0dwhk"]
 [ext_resource type="PackedScene" uid="uid://d0lweerdg8t3" path="res://scenes/ui/score_indicator.tscn" id="6_pfayw"]
 [ext_resource type="PackedScene" uid="uid://bjlnw8okd1p87" path="res://scenes/ui/flickering_texture_rect.tscn" id="7_jcn1r"]
@@ -43,7 +43,7 @@ stretch_mode = 2
 layout_mode = 0
 offset_right = 11.0
 offset_bottom = 11.0
-texture = ExtResource("2_aac20")
+texture = ExtResource("4_4kltc")
 stretch_mode = 2
 
 [node name="PlayerHealth" parent="UIContainer" instance=ExtResource("3_aac20")]
