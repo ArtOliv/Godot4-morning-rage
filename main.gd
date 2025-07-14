@@ -81,4 +81,4 @@ func on_player_alt_selected():
 	player_index = 1
 
 func on_player_revive():
-	ui.on_character_health_change(player.type, current_health, player.max_health)
+	ui.on_character_health_change(player.type, player.max_health, player.max_health)
