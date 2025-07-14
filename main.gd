@@ -16,6 +16,7 @@ const STAGE_PREFAB := [
 @onready var camera := $Camera
 @onready var stage_container: Node2D = $StageContainer
 @onready var stage_trasition: StageTransition = $UI/UIContainer/StageTransition
+@onready var ui : UI = $UI
 
 var initial_position_camera := Vector2.ZERO
 var current_stage_index := -1
@@ -23,13 +24,14 @@ var is_camera_locked := false
 var is_stage_ready_for_loading := false
 var player: Player = null
 var player_index := 0 
-
+var current_health := 10 
 
 func _ready() -> void:
 	initial_position_camera = camera.position
 	StageManager.checkpoint_start.connect(on_checkpoint_start.bind())
 	StageManager.checkpoint_complete.connect(on_checkpoint_complete.bind())
 	StageManager.stage_interim.connect(load_next_stage.bind())
+	DamageManager.player_revive.connect(on_player_revive.bind())
 	
 	if OptionsManager.is_player_alt_selected:
 		player_index = 1
@@ -47,6 +49,8 @@ func _process(_delta: float) -> void:
 		actors_container.add_child(player)
 		player.position = stage.get_player_spawn_location()
 		actors_container.player = player
+		ui.on_character_health_change(player.type, current_health, player.max_health)
+		player.set_health(current_health)
 		camera.position = initial_position_camera
 		camera.reset_smoothing()
 		camera.make_current()
@@ -59,6 +63,8 @@ func load_next_stage():
 	current_stage_index += 1
 	if current_stage_index < STAGE_PREFAB.size():
 		for actor : Node2D in actors_container.get_children():
+			if player != null:	
+				current_health = player.current_health
 			actor.queue_free()
 		
 		for existing_stage in stage_container.get_children():
@@ -73,3 +79,6 @@ func on_checkpoint_complete(_checkpoint: Checkpoint) -> void:
 
 func on_player_alt_selected():
 	player_index = 1
+
+func on_player_revive():
+	ui.on_character_health_change(player.type, current_health, player.max_health)

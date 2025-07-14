@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_lluwt"]
 [ext_resource type="Texture2D" uid="uid://xi7wfrqdnls0" path="res://assets/art/backgrounds/street-background.png" id="2_5wvst"]
-[ext_resource type="Texture2D" uid="uid://xsa8pmn45ixq" path="res://assets/art/backgrounds/bar-entrance.png" id="3_4kghc"]
+[ext_resource type="Texture2D" path="res://assets/art/backgrounds/bar-entrance.png" id="3_4kghc"]
 [ext_resource type="PackedScene" uid="uid://vfehxfoat03c" path="res://scenes/stage/checkpoint.tscn" id="3_mslao"]
 [ext_resource type="PackedScene" uid="uid://b0d0axfed1v72" path="res://scenes/characters/goon_enemy.tscn" id="4_2j5k0"]
-[ext_resource type="Texture2D" uid="uid://j2npvj6koe1b" path="res://assets/art/backgrounds/bar-door.png" id="4_edn1r"]
+[ext_resource type="Texture2D" path="res://assets/art/backgrounds/bar-door.png" id="4_edn1r"]
 [ext_resource type="PackedScene" uid="uid://42xp8bjru0oo" path="res://scenes/characters/enemy_tree.tscn" id="5_w6ome"]
 [ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="6_ea7xw"]
 [ext_resource type="PackedScene" uid="uid://b761o83q6eq64" path="res://scenes/props/barrel.tscn" id="7_2j5k0"]

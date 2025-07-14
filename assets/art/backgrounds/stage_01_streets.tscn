@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmea6waq6p73d"]
+[gd_scene load_steps=11 format=3 uid="uid://dmea6waq6p73d"]
 
 [ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_lluwt"]
 [ext_resource type="Texture2D" uid="uid://xi7wfrqdnls0" path="res://assets/art/backgrounds/street-background.png" id="2_5wvst"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://42xp8bjru0oo" path="res://scenes/characters/enemy_tree.tscn" id="5_w6ome"]
 [ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="6_ea7xw"]
 [ext_resource type="PackedScene" uid="uid://b761o83q6eq64" path="res://scenes/props/barrel.tscn" id="7_2j5k0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecxui"]
+size = Vector2(684.816, 27.546)
 
 [node name="Stage-01-Streets" instance=ExtResource("1_lluwt")]
 music = 2
@@ -33,6 +36,16 @@ position = Vector2(284, 41)
 
 [node name="CollisionShape2D" parent="Colliders/StaticBody2D2" index="0"]
 position = Vector2(321, 46)
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Colliders" index="2"]
+position = Vector2(276, 37)
+rotation = 0.261799
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D3" index="0"]
+position = Vector2(377.164, -45.1558)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_ecxui")
 
 [node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("3_mslao")]
 position = Vector2(100, 0)

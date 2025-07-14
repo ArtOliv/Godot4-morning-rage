@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bda3lm0p2f21q" path="res://scenes/stage/stage.gd" id="1_ecxui"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ecxui"]
-size = Vector2(400, 19)
+size = Vector2(684.816, 27.546)
 
 [node name="Stage" type="Node2D"]
 script = ExtResource("1_ecxui")
@@ -19,7 +19,7 @@ centered = false
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D"]
-position = Vector2(200, 23)
+position = Vector2(348, 29)
 shape = SubResource("RectangleShape2D_ecxui")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Colliders"]
@@ -27,7 +27,7 @@ position = Vector2(0, 63)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colliders/StaticBody2D2"]
-position = Vector2(200, 11)
+position = Vector2(347, 48)
 shape = SubResource("RectangleShape2D_ecxui")
 
 [node name="Checkpoints" type="Node2D" parent="."]
