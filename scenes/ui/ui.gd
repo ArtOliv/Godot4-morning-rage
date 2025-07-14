@@ -129,12 +129,14 @@ func on_game_over():
 		game_over_screen = GAME_OVER_PREFAB.instantiate()
 		print(score_indicator.real_score)
 		game_over_screen.set_score(score_indicator.real_score)
+		get_tree().paused = true
 		add_child(game_over_screen)
 
 func on_game_complete():
 	if game_complete_screen == null:
 		game_complete_screen = GAME_COMPLETE_SCREEN.instantiate()
 		game_complete_screen.set_score(score_indicator.real_score)
+		get_tree().paused = true
 		add_child(game_complete_screen)
 
 func on_checkpoint_complete(_checkpoint: Checkpoint):

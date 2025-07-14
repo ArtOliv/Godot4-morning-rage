@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://nxov1inyelkb" path="res://assets/art/characters/cidadao3.png" id="2_wybsk"]
 
 [node name="EnemyTree" instance=ExtResource("1_led0n")]
-duration_between_hits = 1500
 duration_preps_hit = 700
 damage = 2
 type = 2

@@ -29,6 +29,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -5.0
+offset_right = 5.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 13
@@ -69,6 +71,61 @@ text = "SHAKE"
 
 [node name="Spacer2" type="Control" parent="Background/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fpwlp")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "CONTROLS"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fpwlp")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "MOVE:"
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_fpwlp")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Arrows"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_fpwlp")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "PUNCH:"
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme = ExtResource("1_fpwlp")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "C"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Background/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="Background/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("1_fpwlp")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "JUMP:"
+
+[node name="Label2" type="Label" parent="Background/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme = ExtResource("1_fpwlp")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "X"
 
 [node name="ReturnButton" parent="Background/MarginContainer/VBoxContainer" instance=ExtResource("4_eckhm")]
 layout_mode = 2

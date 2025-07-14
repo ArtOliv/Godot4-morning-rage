@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://cvkiagiv0urbq" path="res://scenes/stage/checkpoint.gd" id="1_bypk3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cgmtq"]
-size = Vector2(4, 64)
+size = Vector2(4, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bypk3"]
-size = Vector2(100, 64)
+size = Vector2(100, 99)
 
 [node name="Checkpoint" type="Node2D"]
 script = ExtResource("1_bypk3")
@@ -19,13 +19,13 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea"]
-position = Vector2(52, 32)
+position = Vector2(52, 49.5)
 shape = SubResource("RectangleShape2D_cgmtq")
 debug_color = Color(0.803922, 1, 0, 0.643137)
 
 [node name="CheckpointPlayArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointPlayArea"]
-position = Vector2(50, 32)
+position = Vector2(50, 49.5)
 shape = SubResource("RectangleShape2D_bypk3")
 debug_color = Color(0.513694, 0.176868, 0.889435, 0.42)

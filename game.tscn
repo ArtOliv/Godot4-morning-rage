@@ -14,5 +14,3 @@ script = ExtResource("1_e2o6t")
 environment = SubResource("Environment_e2o6t")
 
 [node name="MenuScreen" parent="WorldEnvironment" instance=ExtResource("1_80nbo")]
-offset_top = 1.0
-offset_bottom = 1.0

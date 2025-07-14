@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://bcwg82ieadhed" path="res://scenes/stage/camera.gd" id="4_7mycd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(6, 64)
+size = Vector2(7, 100)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h2yge")
@@ -19,7 +19,7 @@ script = ExtResource("1_h2yge")
 [node name="Stage-01-Streets" parent="StageContainer" instance=ExtResource("2_lquwl")]
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2(50, 32)
+position = Vector2(50, 50)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 script = ExtResource("4_7mycd")
@@ -36,6 +36,7 @@ collision_mask = 0
 sync_to_physics = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/InvisibleWalls/LeftWall"]
+position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="RightWall" type="AnimatableBody2D" parent="Camera/InvisibleWalls"]

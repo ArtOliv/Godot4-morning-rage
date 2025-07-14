@@ -4,8 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://wghfguxefenc" path="res://assets/art/characters/enemy_goon.png" id="2_37dns"]
 
 [node name="GoonEnemy" instance=ExtResource("1_jdxqa")]
-duration_between_hits = 3000
-duration_preps_hit = 400
+duration_preps_hit = 300
 type = 3
 duration_grounded = 700.0
 flight_speed = 120.0

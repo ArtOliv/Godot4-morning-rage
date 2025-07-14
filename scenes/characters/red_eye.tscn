@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bxib84kaf270p" path="res://assets/art/characters/red_eye.png" id="2_45rld"]
 
 [node name="RedEye" instance=ExtResource("1_j4jc8")]
-duration_between_hits = 750
+duration_between_hits = 1000
 damage = 2
 type = 7
 

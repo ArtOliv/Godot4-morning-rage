@@ -175,7 +175,7 @@ func pickup_collectible():
 		var collectible_areas := collectible_sensor.get_overlapping_areas()
 		var collectible: Collectible = collectible_areas[0]
 		if collectible.type == Collectible.Type.FOOD:
-			set_health(max_health)
+			set_health(current_health+2)
 			SoundPlayer.play(SoundManager.Sound.FOOD)
 		collectible.queue_free()
 

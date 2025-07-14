@@ -1,26 +1,65 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6wbed6r7rudi"]
+[gd_scene load_steps=10 format=3 uid="uid://b6wbed6r7rudi"]
 
 [ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_iy5kv"]
-[ext_resource type="Texture2D" uid="uid://bd5vpg8lbgt4i" path="res://assets/art/backgrounds/bar-background.png" id="2_74u0c"]
+[ext_resource type="Texture2D" uid="uid://ckjce1t5a78y7" path="res://assets/art/backgrounds/class-background.png" id="2_c1mcx"]
 [ext_resource type="PackedScene" uid="uid://vfehxfoat03c" path="res://scenes/stage/checkpoint.tscn" id="3_4bdwj"]
 [ext_resource type="PackedScene" uid="uid://loh3te6dyh87" path="res://scenes/characters/boss.tscn" id="3_ui4ra"]
 [ext_resource type="PackedScene" uid="uid://b761o83q6eq64" path="res://scenes/props/barrel.tscn" id="5_12dj8"]
+[ext_resource type="PackedScene" uid="uid://2td2ahrxpiey" path="res://scenes/characters/red_eye.tscn" id="5_gcmv4"]
+[ext_resource type="PackedScene" uid="uid://clwbv8esl64pk" path="res://scenes/characters/sci_comp.tscn" id="6_nte1k"]
+[ext_resource type="PackedScene" uid="uid://dakuwyggyckat" path="res://scenes/characters/green.tscn" id="7_arr72"]
+[ext_resource type="PackedScene" uid="uid://dlsgdiirho8ej" path="res://scenes/characters/student.tscn" id="8_740sl"]
 
 [node name="Stage-03" instance=ExtResource("1_iy5kv")]
+music = 3
 
 [node name="MainBackground" parent="Backgrounds" index="0"]
-texture = ExtResource("2_74u0c")
+texture = ExtResource("2_c1mcx")
 
-[node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("3_4bdwj")]
-position = Vector2(100, 1)
+[node name="CollisionShape2D" parent="Colliders/StaticBody2D" index="0"]
+position = Vector2(203, 53)
+
+[node name="CollisionShape2D" parent="Colliders/StaticBody2D2" index="0"]
+position = Vector2(202, 47)
+
+[node name="Checkpoint2" parent="Checkpoints" index="0" instance=ExtResource("3_4bdwj")]
+position = Vector2(41, 1)
+
+[node name="RedEye" parent="Checkpoints/Checkpoint2/Enemies" index="0" instance=ExtResource("5_gcmv4")]
+position = Vector2(-16, 88)
+
+[node name="RedEye2" parent="Checkpoints/Checkpoint2/Enemies" index="1" instance=ExtResource("5_gcmv4")]
+position = Vector2(-14, 126)
+
+[node name="SciComp" parent="Checkpoints/Checkpoint2/Enemies" index="2" instance=ExtResource("6_nte1k")]
+position = Vector2(108, 89)
+
+[node name="SciComp2" parent="Checkpoints/Checkpoint2/Enemies" index="3" instance=ExtResource("6_nte1k")]
+position = Vector2(-7, 77)
+
+[node name="Green" parent="Checkpoints/Checkpoint2/Enemies" index="4" instance=ExtResource("7_arr72")]
+position = Vector2(25, 129)
+
+[node name="Green2" parent="Checkpoints/Checkpoint2/Enemies" index="5" instance=ExtResource("7_arr72")]
+position = Vector2(82, 129)
+
+[node name="Student" parent="Checkpoints/Checkpoint2/Enemies" index="6" instance=ExtResource("8_740sl")]
+position = Vector2(114, 73)
+
+[node name="SciComp3" parent="Checkpoints/Checkpoint2/Enemies" index="7" instance=ExtResource("6_nte1k")]
+position = Vector2(131, 96)
+
+[node name="Checkpoint" parent="Checkpoints" index="1" instance=ExtResource("3_4bdwj")]
+position = Vector2(202, 0)
 
 [node name="Boss" parent="Checkpoints/Checkpoint/Enemies" index="0" instance=ExtResource("3_ui4ra")]
-position = Vector2(80, 49)
+position = Vector2(79, 74)
 
 [node name="Barrel" parent="Containers" index="0" instance=ExtResource("5_12dj8")]
-position = Vector2(46, 52)
+position = Vector2(176, 81)
 
 [node name="PlayerLocalSpawn" parent="." index="5"]
-position = Vector2(17, 48)
+position = Vector2(16, 80)
 
+[editable path="Checkpoints/Checkpoint2"]
 [editable path="Checkpoints/Checkpoint"]

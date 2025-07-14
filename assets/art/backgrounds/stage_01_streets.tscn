@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://ba71woix4hgfw" path="res://scenes/stage/stage.tscn" id="1_lluwt"]
 [ext_resource type="Texture2D" uid="uid://xi7wfrqdnls0" path="res://assets/art/backgrounds/street-background.png" id="2_5wvst"]
-[ext_resource type="Texture2D" uid="uid://xsa8pmn45ixq" path="res://assets/art/backgrounds/bar-entrance.png" id="3_4kghc"]
+[ext_resource type="Texture2D" uid="uid://bsqn5b82efd2s" path="res://assets/art/backgrounds/school-entrance.png" id="3_jh51x"]
 [ext_resource type="PackedScene" uid="uid://vfehxfoat03c" path="res://scenes/stage/checkpoint.tscn" id="3_mslao"]
 [ext_resource type="PackedScene" uid="uid://b0d0axfed1v72" path="res://scenes/characters/goon_enemy.tscn" id="4_2j5k0"]
-[ext_resource type="Texture2D" uid="uid://j2npvj6koe1b" path="res://assets/art/backgrounds/bar-door.png" id="4_edn1r"]
+[ext_resource type="Texture2D" uid="uid://dhadiqwruioop" path="res://assets/art/backgrounds/school-door.png" id="4_4kghc"]
 [ext_resource type="PackedScene" uid="uid://42xp8bjru0oo" path="res://scenes/characters/enemy_tree.tscn" id="5_w6ome"]
 [ext_resource type="PackedScene" uid="uid://d1s2yl1cufw5d" path="res://scenes/characters/enemy.tscn" id="6_ea7xw"]
 [ext_resource type="PackedScene" uid="uid://b761o83q6eq64" path="res://scenes/props/barrel.tscn" id="7_2j5k0"]
@@ -17,19 +17,22 @@ music = 2
 texture = ExtResource("2_5wvst")
 
 [node name="EntraceBar" type="Sprite2D" parent="Backgrounds" index="1"]
-position = Vector2(400, 0)
-texture = ExtResource("3_4kghc")
+position = Vector2(606, 0)
+texture = ExtResource("3_jh51x")
 centered = false
 
 [node name="DoorEntrace" type="Sprite2D" parent="Backgrounds" index="2"]
 z_index = 1
 z_as_relative = false
-position = Vector2(451, 0)
-texture = ExtResource("4_edn1r")
+position = Vector2(658, -1)
+texture = ExtResource("4_4kghc")
 centered = false
 
+[node name="CollisionShape2D" parent="Colliders/StaticBody2D" index="0"]
+position = Vector2(284, 41)
+
 [node name="CollisionShape2D" parent="Colliders/StaticBody2D2" index="0"]
-position = Vector2(229, 11)
+position = Vector2(321, 46)
 
 [node name="Checkpoint" parent="Checkpoints" index="0" instance=ExtResource("3_mslao")]
 position = Vector2(100, 0)
@@ -38,43 +41,43 @@ position = Vector2(100, 0)
 position = Vector2(115, 63)
 
 [node name="EnemyTree" parent="Checkpoints/Checkpoint/Enemies" index="1" instance=ExtResource("5_w6ome")]
-position = Vector2(9, 91)
+position = Vector2(85, 127)
 max_health = 20
 
 [node name="GoonEnemy3" parent="Checkpoints/Checkpoint/Enemies" index="2" instance=ExtResource("4_2j5k0")]
-position = Vector2(128, 37)
+position = Vector2(7, 125)
 duration_between_hits = 4000
 duration_preps_hit = 1000
 
 [node name="Enemy2" parent="Checkpoints/Checkpoint/Enemies" index="3" instance=ExtResource("6_ea7xw")]
-position = Vector2(-89, 58)
+position = Vector2(-32, 88)
 
 [node name="EnemyTree2" parent="Checkpoints/Checkpoint/Enemies" index="4" instance=ExtResource("5_w6ome")]
-position = Vector2(90, 83)
+position = Vector2(127, 84)
 max_health = 20
 
 [node name="GoonEnemy" parent="Checkpoints/Checkpoint/Enemies" index="5" instance=ExtResource("4_2j5k0")]
-position = Vector2(-45, 53)
+position = Vector2(-45, 71)
 duration_between_hits = 4000
 duration_preps_hit = 1000
 
 [node name="Enemy3" parent="Checkpoints/Checkpoint/Enemies" index="6" instance=ExtResource("6_ea7xw")]
-position = Vector2(53, 93)
+position = Vector2(61, 131)
 
 [node name="EnemyTree3" parent="Checkpoints/Checkpoint/Enemies" index="7" instance=ExtResource("5_w6ome")]
-position = Vector2(-12, 49)
+position = Vector2(-16, 68)
 max_health = 20
 
 [node name="GoonEnemy2" parent="Checkpoints/Checkpoint/Enemies" index="8" instance=ExtResource("4_2j5k0")]
-position = Vector2(128, 37)
+position = Vector2(3, 143)
 duration_between_hits = 4000
 duration_preps_hit = 1000
 
 [node name="Checkpoint2" parent="Checkpoints" index="1" instance=ExtResource("3_mslao")]
-position = Vector2(200, 0)
+position = Vector2(307, 0)
 
 [node name="Enemy" parent="Checkpoints/Checkpoint2/Enemies" index="0" instance=ExtResource("6_ea7xw")]
-position = Vector2(-24, 41)
+position = Vector2(-35, 95)
 
 [node name="GoonEnemy" parent="Checkpoints/Checkpoint2/Enemies" index="1" instance=ExtResource("4_2j5k0")]
 position = Vector2(-33, 60)
@@ -82,23 +85,23 @@ duration_between_hits = 4000
 duration_preps_hit = 1000
 
 [node name="EnemyTree" parent="Checkpoints/Checkpoint2/Enemies" index="2" instance=ExtResource("5_w6ome")]
-position = Vector2(138, 44)
+position = Vector2(-22, 94)
 max_health = 20
 
 [node name="Enemy2" parent="Checkpoints/Checkpoint2/Enemies" index="3" instance=ExtResource("6_ea7xw")]
 position = Vector2(114, 143)
 
 [node name="GoonEnemy2" parent="Checkpoints/Checkpoint2/Enemies" index="4" instance=ExtResource("4_2j5k0")]
-position = Vector2(32, 72)
+position = Vector2(132, 89)
 duration_between_hits = 4000
 duration_preps_hit = 1000
 
 [node name="EnemyTree2" parent="Checkpoints/Checkpoint2/Enemies" index="5" instance=ExtResource("5_w6ome")]
-position = Vector2(138, 44)
+position = Vector2(34, 131)
 max_health = 20
 
 [node name="Enemy3" parent="Checkpoints/Checkpoint2/Enemies" index="6" instance=ExtResource("6_ea7xw")]
-position = Vector2(-24, 41)
+position = Vector2(-16, 129)
 
 [node name="GoonEnemy3" parent="Checkpoints/Checkpoint2/Enemies" index="7" instance=ExtResource("4_2j5k0")]
 position = Vector2(-33, 60)
@@ -106,57 +109,57 @@ duration_between_hits = 4000
 duration_preps_hit = 1000
 
 [node name="EnemyTree3" parent="Checkpoints/Checkpoint2/Enemies" index="8" instance=ExtResource("5_w6ome")]
-position = Vector2(138, 44)
+position = Vector2(123, 62)
 max_health = 20
 
 [node name="Enemy4" parent="Checkpoints/Checkpoint2/Enemies" index="9" instance=ExtResource("6_ea7xw")]
-position = Vector2(183, 50)
+position = Vector2(179, 65)
 
 [node name="GoonEnemy4" parent="Checkpoints/Checkpoint2/Enemies" index="10" instance=ExtResource("4_2j5k0")]
-position = Vector2(89, 72)
+position = Vector2(139, 76)
 duration_between_hits = 4000
 duration_preps_hit = 1000
 
 [node name="EnemyTree4" parent="Checkpoints/Checkpoint2/Enemies" index="11" instance=ExtResource("5_w6ome")]
-position = Vector2(138, 44)
+position = Vector2(133, 94)
 max_health = 20
 
 [node name="Checkpoint3" parent="Checkpoints" index="2" instance=ExtResource("3_mslao")]
-position = Vector2(330, 0)
+position = Vector2(554, 2)
 nb_simultaneous_enemies = 3
 
 [node name="Enemy" parent="Checkpoints/Checkpoint3/Enemies" index="0" instance=ExtResource("6_ea7xw")]
-position = Vector2(84, 57)
+position = Vector2(49, 141)
 
 [node name="EnemyTree" parent="Checkpoints/Checkpoint3/Enemies" index="1" instance=ExtResource("5_w6ome")]
-position = Vector2(61, 114)
+position = Vector2(62, 128)
 
 [node name="GoonEnemy" parent="Checkpoints/Checkpoint3/Enemies" index="2" instance=ExtResource("4_2j5k0")]
-position = Vector2(74, 80)
+position = Vector2(92, 132)
 
 [node name="Enemy3" parent="Checkpoints/Checkpoint3/Enemies" index="3" instance=ExtResource("6_ea7xw")]
-position = Vector2(114, 59)
+position = Vector2(-39, 73)
 
 [node name="GoonEnemy3" parent="Checkpoints/Checkpoint3/Enemies" index="4" instance=ExtResource("4_2j5k0")]
 position = Vector2(-43, 102)
 
 [node name="EnemyTree2" parent="Checkpoints/Checkpoint3/Enemies" index="5" instance=ExtResource("5_w6ome")]
-position = Vector2(-8, 52)
+position = Vector2(-22, 80)
 
 [node name="Enemy2" parent="Checkpoints/Checkpoint3/Enemies" index="6" instance=ExtResource("6_ea7xw")]
-position = Vector2(20, 91)
+position = Vector2(-57, 69)
 
 [node name="EnemyTree3" parent="Checkpoints/Checkpoint3/Enemies" index="7" instance=ExtResource("5_w6ome")]
-position = Vector2(-45, 51)
+position = Vector2(-26, 110)
 
 [node name="GoonEnemy2" parent="Checkpoints/Checkpoint3/Enemies" index="8" instance=ExtResource("4_2j5k0")]
 position = Vector2(8, 128)
 
 [node name="Barrel" parent="Containers" index="0" instance=ExtResource("7_2j5k0")]
-position = Vector2(314, 46)
+position = Vector2(466, 66)
 
 [node name="Barrel2" parent="Containers" index="1" instance=ExtResource("7_2j5k0")]
-position = Vector2(213, 54)
+position = Vector2(247, 79)
 
 [node name="PlayerLocalSpawn" parent="." index="5"]
 position = Vector2(34, 53)
